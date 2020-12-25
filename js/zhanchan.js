@@ -277,8 +277,15 @@ function updateActionPoint(){
       document.getElementById("totalACT1").innerHTML=Math.round(Number(document.getElementById("actionPoint1").innerHTML))
       document.getElementById("totalACT2").innerHTML=Math.round(Number(document.getElementById("actionPoint3").innerHTML))
       document.getElementById("totalACT3").innerHTML=document.getElementById("actionPoint2").innerHTML
-
-    },3000)
+      //血量格式化
+      document.getElementById("totalHp1").innerHTML=numberFormat(document.getElementById("totalHp1").innerHTML)
+      document.getElementById("totalHp2").innerHTML=numberFormat(document.getElementById("totalHp2").innerHTML)
+      document.getElementById("totalHp3").innerHTML=numberFormat(document.getElementById("totalHp3").innerHTML)
+      //防御格式化
+      document.getElementById("def1").innerHTML=numberFormat(document.getElementById("def1").innerHTML)
+      document.getElementById("def2").innerHTML=numberFormat(document.getElementById("def2").innerHTML)
+      document.getElementById("def3").innerHTML=numberFormat(document.getElementById("def3").innerHTML)
+    },3100)
   })
 }
 
@@ -286,3 +293,39 @@ function updateActionPoint(){
 
 
 $(document).ready(updateActionPoint())
+
+
+function getMyknightMsg(num) {
+
+
+  var api = get_random_api();
+  var selfData = {
+    json: true,
+    code: kingContractName,
+    scope: num,
+    table: 'knight',
+    index_position: 1,
+    key_type: "i64",
+    lower_bound: getCookie("account"),
+    limit: 1,
+    reverse: false,
+    show_payer: false,
+  }
+  $.post(api + "/v1/chain/get_table_rows", JSON.stringify(selfData),
+    function(data, status) {
+      console.log(data,'getMykni')
+      for (x in data["rows"]) {
+        if (data["rows"][x].acc == getCookie("account")) {
+          myknightMsg[num] = data["rows"][x];
+
+          var nowTime=new Date().getTime()
+          var lastdriptime= new Date(myknightMsg[num]["lastdriptime"]).getTime()
+          console.log(nowTime,'nowTime');
+          var callableActionPoints=(nowTime)
+
+
+        }
+      }
+    }, "json");
+}
+getMyknightMsg(1)

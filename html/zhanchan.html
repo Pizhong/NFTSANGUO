@@ -54,7 +54,7 @@
     <div class="main">
       <div class="main-box1">
         <p class="box1-p1">魏国驻军</p>
-        <p class="box1-p2" id="actionPoint1">--</p>
+        <p class="box1-p2" id="actionPoint1" style="display:none;">--</p>
         <!-- <img class="box1-img1" src="../image/zhanchan-box1.png" alt=""> -->
         <div class="box1-img" onclick="showBattleTarget()"></div>
         <img src="../image/wei-flag.png" class="box1-flag">
@@ -65,7 +65,7 @@
       </div>
       <div class="main-box2">
         <p class="box2-p1">吴国驻军</p>
-        <p class="box2-p2" id="actionPoint3">--</p>
+        <p class="box2-p2" id="actionPoint3" style="display:none;">--</p>
         <div class="box2-img" onclick="showBattleTarget()"></div>
         <img src="../image/wu-flag.png" class="box2-flag">
         <div class="box1-jianli-che" onclick="getActionPotint()">
@@ -79,25 +79,25 @@
       <div class="main-box4">
         <div class="main-box4-1">
           <p class="box4-1-p1">蜀国驻军</p>
-        <p class="box1-p2" id="actionPoint2" style="position: absolute;top: 70px;left: -32px;">--</p>
-          <div class="box4-1-p2">
+        <p class="box1-p2" id="actionPoint2" style="position: absolute;top: 70px;left: -32px;display: none;">--</p>
+          <!-- <div class="box4-1-p2">
             <img src="../image/zhu.png" alt="">
             <p>x4</p>
-          </div>
+          </div> -->
           <div class="box4-img-1" onclick="showBattleTarget()"></div>
         </div>
-        <div class="main-box4-2">
+        <!-- <div class="main-box4-2">
           <p class="box4-2-p1">要塞13</p>
           <div class="box4-2-p2">
             <img src="../image/mian.png" alt="">
             <p>00:05:46</p>
           </div>
           <div class="box4-img-2" onclick="showBattleTarget()"></div>
-          <div class="box1-jianli-che" onclick="getActionPotint()" style="top:113px">
-            <img src="../image/che.png" alt="">
-            <p><span id="burse3"></span><br><span id="burse23"></span></p>
-          </div>
           
+        </div> -->
+        <div class="box1-jianli-che" onclick="getActionPotint()" style="top:169px">
+          <img src="../image/che.png" alt="">
+          <p><span id="burse3"></span><br><span id="burse23"></span></p>
         </div>
         <img src="../image/shu-flag.png" alt="" class="box4-flag">
       </div>
@@ -105,22 +105,22 @@
         <p>血量：<span id="totalHp1">--</span></p>
         <img src="../image/blod.png" alt="">
         <p>防御：<span id="def1"></span></p>
-        <img src="../image/bule .png" alt="">
-        <p style="margin-top: 8px;">行动力 : <span>(<span id="supplyACT1"></span> / <span id="totalACT1"></span> )</span></p>
+        <!-- <img src="../image/bule .png" alt=""> -->
+        <p style="margin-top: 5px;">行动力 : <span>(<span id="supplyACT1"></span> / <span id="totalACT1"></span> )</span></p>
       </div>
       <div class="blod-box2">
         <p>血量：<span id="totalHp3">--</span></p>
         <img src="../image/blod.png" alt="">
         <p>防御：<span id="def3"></span></p>
-        <img src="../image/bule .png" alt="">
-        <p style="margin-top: 8px;">行动力 : <span>(<span id="supplyACT2"></span> / <span id="totalACT2"></span> )</span></p>
+        <!-- <img src="../image/bule .png" alt=""> -->
+        <p style="margin-top: 5px;">行动力 : <span>(<span id="supplyACT2"></span> / <span id="totalACT2"></span> )</span></p>
       </div>
       <div class="blod-box3">
         <p>血量：<span id="totalHp2">--</span></p>
         <img src="../image/blod.png" alt="">
         <p>防御：<span id="def2"></span></p>
-        <img src="../image/bule .png" alt="">
-        <p style="margin-top: 8px;">行动力 : <span>(<span id="supplyACT3"></span> / <span id="totalACT3"></span> )</span></p>
+        <!-- <img src="../image/bule .png" alt=""> -->
+        <p style="margin-top: 5px;">行动力 : <span>(<span id="supplyACT3"></span> / <span id="totalACT3"></span> )</span></p>
       </div>
       <!-- <div class="jianli">
         <img src="../image/baoxiang.png" alt="" class="jianli-baoxiang">
@@ -132,39 +132,39 @@
 
     </div>
     <div class="all-icon">
-      <div class="all-icon-left">
-        <ul>
-          <li><img src="../image/left-icon-1.png" alt=""></li> <!--政治任务-->
-          <li><img src="../image//left-icon-3.png" alt=""></li><!--武将目标-->
-          <li><img src="../image//left-icon-4.png" alt=""></li><!--日常-->
-          <li><img src="../image/left-icon-5.png" alt=""></li><!--我要变强-->
-          <li><img src="../image/left-icon-6.png" alt=""></li><!--奖励-->
-          <li><img src="../image/left-icon-7.png" alt=""></li><!--签到-->
-        </ul>
-      </div>
+      <!-- <div class="all-icon-left"> -->
+        <!-- <ul> -->
+          <!-- <li><img src="../image/left-icon-1.png" alt=""></li> 政治任务 -->
+          <!-- <li><img src="../image//left-icon-3.png" alt=""></li>武将目标 -->
+          <!-- <li><img src="../image//left-icon-4.png" alt=""></li>日常 -->
+          <!-- <li><img src="../image/left-icon-5.png" alt=""></li>我要变强 -->
+          <!-- <li><img src="../image/left-icon-6.png" alt=""></li>奖励 -->
+          <!-- <li><img src="../image/left-icon-7.png" alt=""></li>签到 -->
+        <!-- </ul> -->
+      <!-- </div> -->
       <div class="all-icon-right-top">
         <ul>
           <li><img src="../image/right-top-icon-1.png" alt="" onclick="showWarReport()"></li><!--战报-->
-          <li><img src="../image/right-top-icon-2.png" alt=""></li><!--任务-->
+          <!-- <li><img src="../image/right-top-icon-2.png" alt=""></li>任务 -->
           <li><img src="../image/left-icon-2.png" alt="" onclick="showActionMessage()" id="battle-target" style="display: none;"></li><!--战斗目标-->
         </ul>
       </div>
-      <div class="all-icon-right-bottom">
-        <ul>
-          <li><img src="../image/right-bottom-icon-1.png" alt=""></li><!--战役-->
-          <li><img src="../image/right-bottom-icon-2.png" alt=""></li><!--主城-->
-        </ul>
-      </div>
-      <div class="all-icon-bottom">
-          <ul>
-            <li><img src="../image/bottom-icon-1.png" alt=""></li><!--道具-->
-            <li><img src="../image/bottom-icon-2.png" alt=""></li><!--武将-->
-            <li><img src="../image/bottom-icon-3.png" alt=""></li><!--事件-->
-            <li><img src="../image/bottom-icon-4.png" alt=""></li><!--内政-->
-            <li><img src="../image/bottom-icon-5.png" alt=""></li><!--商城-->
-            <li><img src="../image/bottom-icon-6.png" alt=""></li><!--更多-->
-          </ul>
-      </div>
+      <!-- <div class="all-icon-right-bottom"> -->
+        <!-- <ul> -->
+          <!-- <li><img src="../image/right-bottom-icon-1.png" alt=""></li>战役 -->
+          <!-- <li><img src="../image/right-bottom-icon-2.png" alt=""></li>主城 -->
+        <!-- </ul> -->
+      <!-- </div> -->
+      <!-- <div class="all-icon-bottom"> -->
+          <!-- <ul> -->
+            <!-- <li><img src="../image/bottom-icon-1.png" alt=""></li>道具 -->
+            <!-- <li><img src="../image/bottom-icon-2.png" alt=""></li>武将 -->
+            <!-- <li><img src="../image/bottom-icon-3.png" alt=""></li>事件 -->
+            <!-- <li><img src="../image/bottom-icon-4.png" alt=""></li>内政 -->
+            <!-- <li><img src="../image/bottom-icon-5.png" alt=""></li>商城 -->
+            <!-- <li><img src="../image/bottom-icon-6.png" alt=""></li>更多 -->
+          <!-- </ul> -->
+      <!-- </div> -->
     </div>
     <img src="../image/goback.png" alt="" class="goback" onclick="gobackIndex()">
   </div>
