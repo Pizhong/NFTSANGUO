@@ -501,13 +501,16 @@ header {
 
 .box1-jianli-che p {
     width: 75px;
-    height: 26px;
-    line-height: 26px;
+    height: 44px;
+   
     background: url(../image/che-bottom.png) no-repeat;
     font-size: 11.55px;
     color: #fff;
     text-align: center;
-    margin-top: 0;
+    padding-top: 5px;
+}
+.box1-jianli-che p span{
+  margin-bottom: 2px;
 }
 
 .all-icon {

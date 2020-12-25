@@ -377,7 +377,10 @@ function getMyknightMsg(num) {
           console.log(times,'times');
           console.log(balance,'balance');
           console.log(myMiningAct,'act');
-          $('#callable-action-points').html(Number(myMiningAct))
+          var MiningAct=''
+          MiningAct = new CountUp("callable-action-points",0,0.00000000,8,3,options)
+          // $('#callable-action-points').html(Number(myMiningAct))
+          MiningAct.update(Number(myMiningAct))
         }
       }
     }, "json");
