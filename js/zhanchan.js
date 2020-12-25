@@ -50,6 +50,7 @@ var options = {
   prefix: '', //第一位默认数字
   suffix: '' //最后一位默认数字
 };
+var globalNum=''
 // 数字格式化
 function numberFormat(num){
   if(num>=100000000){
@@ -78,8 +79,8 @@ function getActionPotint(num){
     html += '<div class="alert-box">';
     html +=  '<div class="action-content flex">';
     html +=  '<p>我可领取的行动点:<span id="callable-action-points"></span></p>'
-    html +=  '<img src="../image/action-point-button.png" style="cursor: pointer;">'
-    html +=  '<img src="../image/action-point-close.png" class="close"  onclick="$(\'#action-point\').hide()">'
+    html +=  '<img src="../image/action-point-button.png" style="cursor: pointer;" onclick="receiveActionPonit()">'
+    html +=  '<img src="../image/action-point-close.png" class="close"  onclick="closeActionPointMsg()">'
     html +=  '</div>';
     html += '</div>';
     html += '</div>';
@@ -91,7 +92,15 @@ function getActionPotint(num){
   }
   $("#action-point").show();
 }
+function closeActionPointMsg(){
+  $('#action-point').hide()
+  $('#callable-action-points').html('')
+}
 
+//领取行动点
+function receiveActionPonit(){
+  mining(globalNum)
+}
 function showWarReport(){
   if ($('#war-report').length == 0) {
     
@@ -303,7 +312,7 @@ $(document).ready(updateActionPoint())
 
 
 function getMyknightMsg(num) {
-
+  globalNum=num
 
   var api = get_random_api();
   var selfData = {
@@ -330,13 +339,57 @@ function getMyknightMsg(num) {
           var lastdriptime= new Date(myknightMsg[num]["lastdriptime"]).getTime()
           console.log(nowTime,'nowTime');
           var ctime=nowTime-lastdriptime
-
           var cbalance=((objMsg[num-1].totalACT)-(objMsg[num-1].supplyACT))/objMsg[num-1].period
           var cpow=(myknightMsg[num]["power"])/(objMsg[num-1].totalpower)
           var callableActionPoints=ctime * cbalance * cpow
           console.log(callableActionPoints,'call');
-          
+          $('#callable-action-points').html(Number(callableActionPoints))
         }
       }
     }, "json");
+}
+
+//收取行动点
+function mining(num) {
+  var fromUser = getCookie("account");
+
+
+
+  checkScatter(function(user) {
+    var authorization;
+    const eos = loot.scatter.eos(network, Eos);
+    const account = user.name;
+    authorization = [{
+      actor: account,
+      permission: user.authority
+    }]
+
+    var actions = [{
+      account: kingContractName,
+      name: 'mining',
+      authorization: authorization,
+      data: {
+        acc: fromUser,
+        kingdomid: num
+      }
+    }];
+
+
+    // console.log("actions:",actions)
+    // return
+
+    eos.transaction({
+      actions: actions
+    }).then(res => {
+      alert("收取行动点成功！");
+      setTimeout(function() {
+        getMyknightMsg(num);
+      }, 500)
+
+      // $('#stacknftBox').hide();
+    }).catch(e => {
+
+      eosErrorShow(e);
+    });
+  })
 }
