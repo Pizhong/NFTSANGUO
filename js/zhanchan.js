@@ -10,7 +10,9 @@ var sanguoMsg = {
     'supplyACT': '',
     'totalACT': '',
     'totalHP': '',
-    'brokencount': ''
+    'brokencount': '',
+    'totalpower':'',
+    'period':''
   },
   'sanguo_02': {
     'id': 2,
@@ -21,7 +23,9 @@ var sanguoMsg = {
     'supplyACT': '',
     'totalACT': '',
     'totalHP': '',
-    'brokencount': ''
+    'brokencount': '',
+    'totalpower':'',
+    'period':''
   },
   'sanguo_03': {
     'id':3,
@@ -32,7 +36,9 @@ var sanguoMsg = {
     'supplyACT': '',
     'totalACT': '',
     'totalHP': '',
-    'brokencount': ''
+    'brokencount': '',
+    'totalpower':'',
+    'period':''
   }
 }
 var objMsg=[]
@@ -62,7 +68,8 @@ function numberFormat(num){
  }
 
 
-function getActionPotint(){
+function getActionPotint(num){
+  getMyknightMsg(num)
   if ($('#action-point').length == 0) {
     
     var html = '';
@@ -70,7 +77,7 @@ function getActionPotint(){
     html += '<div class="alert-publicly" id="action-point" style="display: none;">';
     html += '<div class="alert-box">';
     html +=  '<div class="action-content flex">';
-    html +=  '<p>我可领取的行动点:<span>99999.99999999</span></p>'
+    html +=  '<p>我可领取的行动点:<span id="callable-action-points"></span></p>'
     html +=  '<img src="../image/action-point-button.png" style="cursor: pointer;">'
     html +=  '<img src="../image/action-point-close.png" class="close"  onclick="$(\'#action-point\').hide()">'
     html +=  '</div>';
@@ -316,16 +323,20 @@ function getMyknightMsg(num) {
       console.log(data,'getMykni')
       for (x in data["rows"]) {
         if (data["rows"][x].acc == getCookie("account")) {
+
           myknightMsg[num] = data["rows"][x];
 
           var nowTime=new Date().getTime()
           var lastdriptime= new Date(myknightMsg[num]["lastdriptime"]).getTime()
           console.log(nowTime,'nowTime');
-          var callableActionPoints=(nowTime)
+          var ctime=nowTime-lastdriptime
 
-
+          var cbalance=((objMsg[num-1].totalACT)-(objMsg[num-1].supplyACT))/objMsg[num-1].period
+          var cpow=(myknightMsg[num]["power"])/(objMsg[num-1].totalpower)
+          var callableActionPoints=ctime * cbalance * cpow
+          console.log(callableActionPoints,'call');
+          
         }
       }
     }, "json");
 }
-getMyknightMsg(1)
