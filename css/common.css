@@ -547,6 +547,7 @@ span{
 }
 .sure-btn{
   margin: 30px 0;
+  cursor: pointer;
 }
 .action-message-content .close{
   position: absolute;

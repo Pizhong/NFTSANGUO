@@ -52,6 +52,10 @@ var options = {
 };
 var myknightMsg={}
 var globalNum=''
+var userActionKing = 1;
+var userActionType = '';
+var userActionsOnKing = 1;
+var globalCountry=''
 // 数字格式化
 function numberFormat(num){
   if(num>=100000000){
@@ -140,6 +144,7 @@ function showWarReport(){
 }
 
 function showActionMessage(){
+  getMyknightMsg(globalCountry)
   if ($('#action-message').length == 0) {
     
     var html = '';
@@ -151,28 +156,28 @@ function showActionMessage(){
     html +=  '<div class="action-message-box1">';
     html +=   '<p>行动信息</p>'
     html +=   '<div class="action-message-icon-box">'
-    html +=   '<img src="../image/gongji.png">'
-    html +=   '<img src="../image/fanyu.png">'
-    html +=   '<img src="../image/jiaxue.png">'
-    html +=   '<img src="../image/qianqi.png">'
+    html +=   '<img src="../image/gongji.png" onclick="selectAction(\'fire\')" style="cursor:pointer;">'
+    html +=   '<img src="../image/fanyu.png" onclick="selectAction(\'defence\')" style="cursor:pointer;">'
+    html +=   '<img src="../image/jiaxue.png" onclick="selectAction(\'heal\')" style="cursor:pointer;">'
+    html +=   '<img src="../image/qianqi.png" onclick="selectAction(\'captureflag\')" style="cursor:pointer;">'
     html +=   '</div>'
     html += '</div>';
     html +=  '<div class="action-message-box2">';
     html +=   '<p>目标势力</p>'
     html +=   '<div class="action-message-icon-box">'
-    html +=   '<img src="../image/action-message-icon-wei .png">'
-    html +=   '<img src="../image/action-message-icon-shu .png">'
-    html +=   '<img src="../image/action-message-icon-wu .png">'
+    html +=   '<img src="../image/action-message-icon-wei .png" onclick="selectCountry(1)" style="cursor:pointer;">'
+    html +=   '<img src="../image/action-message-icon-shu .png" onclick="selectCountry(2)" style="cursor:pointer;">'
+    html +=   '<img src="../image/action-message-icon-wu .png" onclick="selectCountry(3)" style="cursor:pointer;">'
     html +=   '</div>'
     html += '</div>';
     html += '<div class="action-message-box3">'
-    html += '<p>现在可以使用行动点 : <span>999</span>，总算力 : <span>9999</span>，您准备使用：</p>'
+    html += '<p>现在可以使用行动点 : <span id="action-get"></span>，总算力 : <span id="action-totalPower"></span>，您准备使用：</p>'
     html += '<form>'
-    html += '<input type="text" placeholder="输入行动点数" id="userUsePoint">'
+    html += '<input type="text" placeholder="输入行动点数" id="userUsePoint" oninput="estimatedResultShow()">'
     html += '</form>'
-    html += '<p>预估效果：造成魏国 <span>9999999999</span> 点伤害</p>'
+    html += '<p>预估效果：<span id="estimatedResultTag"</span> </p>'
     html += '</div>'
-    html += '<img src="../image/action-message-sure-btn.png" class="sure-btn">'
+    html += '<img src="../image/action-message-sure-btn.png" class="sure-btn" onclick="userActionOK()">'
     html += '</div>';
     html += '</div>';
     html += '</div>';
@@ -182,7 +187,12 @@ function showActionMessage(){
   }else{
 
   }
+  
+    $('#action-get').html(Number(myknightMsg[1].freeact)/100000000)
+    $('#action-totalPower').html(myknightMsg[1].power)
+  
   $("#action-message").show();
+  
 }
 
 //返回首页
@@ -191,8 +201,9 @@ function gobackIndex(){
 }
 
 //显示战斗目标图标
-function showBattleTarget(){
+function showBattleTarget(num){
   $("#battle-target").show()
+  globalCountry=num
 }
 
 //行动点更新
@@ -417,34 +428,64 @@ function mining(num) {
   })
 }
 
+function selectAction(type){
+  userActionType = type
+  
+  console.log(type);
+}
+
+function selectCountry(king){
+  userActionKing=king
+  userActionsOnKing = king;
+  getMyknightMsg(king)
+  console.log(king);
+}
+
+
+
+
 //战斗目标
 function estimatedResultShow() {
+  
   var num = $("#userUsePoint").val();
   var html = '';
   if (num > 0) {
-    var usePoint = getUserOnKingAct(userActionKing);
-    var poingConstant = Math.pow(0.5, Math.floor(usePoint / 5000));
+    var usePoint = getUserOnKingAct(userActionKing)/100000000;
+    console.log(usePoint,'usepoint');
+    var poingConstant = Math.pow(0.5, Math.floor(usePoint/5000));
+
+    console.log(poingConstant,'poingConstant1');
 
     if (userActionType == "fire") {
+      console.log(userActionType);
       // var tag = Number(myknightMsg[userActionKing].power * num * poingConstant * 3) - kingMsg[userActionsOnKing-1].def;
       var tag = Number(myknightMsg[userActionKing].power * num * poingConstant * 3);
+      console.log(myknightMsg[userActionKing].power,'myknightMsg[userActionKing].power');
+      console.log(num,'num');
+      console.log(poingConstant,'poingConstant');
       if (tag < 0) {
         tag = 0;
       }
-      html += '  <div>预计能给 ' + getKingName(userActionsOnKing) + ' 造成 ' + tag + ' 伤害 </div>';
+      html += '  <span>预计能给 ' + getKingName(userActionsOnKing) + ' 造成 ' + tag + ' 伤害 </span>';
       // html += '  <div>你确定花费 ' + num + ' 行动点，攻击 ' + getKingName(userActionsOnKing) + ' 吗？</div>';
     } else if (userActionType == "defence") {
       var tag = Number(myknightMsg[userActionKing].power * num * poingConstant / 2).toFixed(0);
-      html += '  <div>预计能给 ' + getKingName(userActionsOnKing) + ' 加 ' + tag + ' 防御 </div>';
+      html += '  <span>预计能给 ' + getKingName(userActionsOnKing) + ' 加 ' + tag + ' 防御 </span>';
       // html += '  <div>你确定花费' + num + '行动点，给' + getKingName(userActionsOnKing) + '加防御？</div>';
-    } else {
-      var increaseBlood = kingMsg[userActionsOnKing - 1].totalHP - kingMsg[userActionsOnKing - 1].hp;
+    } else if(userActionType=="heal"){
+      var increaseBlood = objMsg[userActionsOnKing - 1].totalHP - objMsg[userActionsOnKing - 1].hp;
       var tag = myknightMsg[userActionKing].power * num * poingConstant;
       if (tag > increaseBlood) {
         tag = increaseBlood;
       }
-      html += '  <div>预计能给 ' + getKingName(userActionsOnKing) + ' 加 ' + tag + ' 血量 </div>';
+      html += '  <span>预计能给 ' + getKingName(userActionsOnKing) + ' 加 ' + tag + ' 血量 </span>';
       // html += '  <div>你确定花费' + num + '行动点，给' + getKingName(userActionsOnKing) + '加血？</div>';
+    }else{
+      var tag = Number(myknightMsg[userActionKing].power * num * poingConstant * 3);
+      if (tag < 0) {
+        tag = 0;
+      }
+      html += '  <span>预计能给 ' + getKingName(userActionsOnKing) + ' 造成 ' + tag + ' 伤害 </span>';
     }
 
     $("#estimatedResultTag").html(html);
@@ -497,8 +538,7 @@ function userActionOK() {
       } else if (userActionType == "defence") {
         showMsg("加防成功！");
       }
-      $('#kingMsgSHow').hide();
-      $('#userActionBox').hide();
+   
       setTimeout(function() {
         getKingdomMsg();
       }, 1000)
@@ -509,6 +549,23 @@ function userActionOK() {
     });
   })
 }
+
+function getKingName(num) {
+  var tag = '魏国';
+  switch (String(num)) {
+    case "2":
+      tag = '蜀国';
+      break
+    case "3":
+      tag = '吴国';
+      break
+  }
+  return tag;
+}
+
+
+
+
 
 function getUserOnKingAct(num) {
   var tag = '--';
