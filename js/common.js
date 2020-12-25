@@ -699,7 +699,7 @@ function getUserBanklocker() {
   getLinkData(api, selfData, function(data) {
     for (x in data["rows"]) {
       var obj = data["rows"][x];
-
+      console.log('obj:',obj);
 
 
 

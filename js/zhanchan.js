@@ -50,6 +50,7 @@ var options = {
   prefix: '', //第一位默认数字
   suffix: '' //最后一位默认数字
 };
+var myknightMsg={}
 var globalNum=''
 // 数字格式化
 function numberFormat(num){
@@ -167,7 +168,7 @@ function showActionMessage(){
     html += '<div class="action-message-box3">'
     html += '<p>现在可以使用行动点 : <span>999</span>，总算力 : <span>9999</span>，您准备使用：</p>'
     html += '<form>'
-    html += '<input type="text" placeholder="输入行动点数">'
+    html += '<input type="text" placeholder="输入行动点数" id="userUsePoint">'
     html += '</form>'
     html += '<p>预估效果：造成魏国 <span>9999999999</span> 点伤害</p>'
     html += '</div>'
@@ -213,7 +214,7 @@ function updateActionPoint(){
   getLinkData(api, selfData, function(data) {
     for (x in data["rows"]) {
       objMsg[x] = data["rows"][x];  
-      objMsg[x].supplyACT = Math.floor(Number(parseFloat(objMsg[x].supplyACT) / Math.pow(10, 1)));
+      objMsg[x].supplyACT = Math.floor(Number(parseFloat(objMsg[x].supplyACT) / Math.pow(10, 8)));
       objMsg[x].totalACT = Math.floor(Number(parseFloat(objMsg[x].totalACT) / Math.pow(10, 8)));
       console.log(numberFormat(objMsg[x].totalHP));
       $.each(sanguoMsg, function(i, n) {
@@ -332,18 +333,40 @@ function getMyknightMsg(num) {
       console.log(data,'getMykni')
       for (x in data["rows"]) {
         if (data["rows"][x].acc == getCookie("account")) {
-
           myknightMsg[num] = data["rows"][x];
+          var balance = '';
+          var times = 0;
+          var myMiningAct;
+          var proportion;
+          $.each(objMsg, function(i, n) {
+            if (n.id == num) {
+              console.log(n,'n');
+              balance = (n.totalACT - n.supplyACT) / n.period;
+              proportion = myknightMsg[num].power / n.totalpower;
+            }
+          })
 
-          var nowTime=new Date().getTime()
-          var lastdriptime= new Date(myknightMsg[num]["lastdriptime"]).getTime()
-          console.log(nowTime,'nowTime');
-          var ctime=nowTime-lastdriptime
-          var cbalance=((objMsg[num-1].totalACT)-(objMsg[num-1].supplyACT))/objMsg[num-1].period
-          var cpow=(myknightMsg[num]["power"])/(objMsg[num-1].totalpower)
-          var callableActionPoints=ctime * cbalance * cpow
-          console.log(callableActionPoints,'call');
-          $('#callable-action-points').html(Number(callableActionPoints))
+          // var nowTime=new Date().getTime()
+          // var lastdriptime= new Date(myknightMsg[num]["lastdriptime"]).getTime()
+          // console.log(nowTime,'nowTime');
+          // var ctime=nowTime-lastdriptime
+          // var cbalance=((objMsg[num-1].totalACT)-(objMsg[num-1].supplyACT))/objMsg[num-1].period
+          // var cpow=(myknightMsg[num]["power"])/(objMsg[num-1].totalpower)
+          // var callableActionPoints=ctime * cbalance * cpow
+          // console.log(callableActionPoints,'call');
+          console.log(objMsg[0].period);
+          if(getUTCTime(objMsg[0].start) > objMsg[0].period){
+            times = objMsg[0].period - (getUTCTime(objMsg[0].start) - getUserUTC(myknightMsg[num].lastdriptime))
+
+          }else if (myknightMsg[num].lastdriptime) {
+            times = getUserUTC(myknightMsg[num].lastdriptime);
+          }
+
+          myMiningAct = balance * times * proportion;
+          console.log(times,'times');
+          console.log(balance,'balance');
+          console.log(myMiningAct,'act');
+          $('#callable-action-points').html(Number(myMiningAct))
         }
       }
     }, "json");
@@ -392,4 +415,114 @@ function mining(num) {
       eosErrorShow(e);
     });
   })
+}
+
+//战斗目标
+function estimatedResultShow() {
+  var num = $("#userUsePoint").val();
+  var html = '';
+  if (num > 0) {
+    var usePoint = getUserOnKingAct(userActionKing);
+    var poingConstant = Math.pow(0.5, Math.floor(usePoint / 5000));
+
+    if (userActionType == "fire") {
+      // var tag = Number(myknightMsg[userActionKing].power * num * poingConstant * 3) - kingMsg[userActionsOnKing-1].def;
+      var tag = Number(myknightMsg[userActionKing].power * num * poingConstant * 3);
+      if (tag < 0) {
+        tag = 0;
+      }
+      html += '  <div>预计能给 ' + getKingName(userActionsOnKing) + ' 造成 ' + tag + ' 伤害 </div>';
+      // html += '  <div>你确定花费 ' + num + ' 行动点，攻击 ' + getKingName(userActionsOnKing) + ' 吗？</div>';
+    } else if (userActionType == "defence") {
+      var tag = Number(myknightMsg[userActionKing].power * num * poingConstant / 2).toFixed(0);
+      html += '  <div>预计能给 ' + getKingName(userActionsOnKing) + ' 加 ' + tag + ' 防御 </div>';
+      // html += '  <div>你确定花费' + num + '行动点，给' + getKingName(userActionsOnKing) + '加防御？</div>';
+    } else {
+      var increaseBlood = kingMsg[userActionsOnKing - 1].totalHP - kingMsg[userActionsOnKing - 1].hp;
+      var tag = myknightMsg[userActionKing].power * num * poingConstant;
+      if (tag > increaseBlood) {
+        tag = increaseBlood;
+      }
+      html += '  <div>预计能给 ' + getKingName(userActionsOnKing) + ' 加 ' + tag + ' 血量 </div>';
+      // html += '  <div>你确定花费' + num + '行动点，给' + getKingName(userActionsOnKing) + '加血？</div>';
+    }
+
+    $("#estimatedResultTag").html(html);
+  } else {
+    $("#estimatedResultTag").html('');
+  }
+}
+
+function userActionOK() {
+  if (userActionsOnKing == '') {
+    showMsg("请选择目标国家");
+    return
+  }
+  if ($("#userUsePoint").val() == '') {
+    showMsg("请输入要使用的点数");
+    return
+  }
+
+
+  var actpoint = Number($("#userUsePoint").val()) * Math.pow(10, 8);
+  var fromUser = getCookie("account");
+  checkScatter(function(user) {
+    var authorization;
+    const eos = loot.scatter.eos(network, Eos);
+    const account = user.name;
+    authorization = [{
+      actor: account,
+      permission: user.authority
+    }]
+    var selfData = {
+      acc: fromUser,
+      actpoint: actpoint,
+      fromkingdom: userActionKing,
+      tokingdom: userActionsOnKing
+    }
+
+    var actions = [{
+      account: kingContractName,
+      name: userActionType,
+      authorization: authorization,
+      data: selfData
+    }];
+    eos.transaction({
+      actions: actions
+    }).then(res => {
+      if (userActionType == "fire") {
+        showMsg("攻击成功！");
+      } else if (userActionType == "heal") {
+        showMsg("回血成功！");
+      } else if (userActionType == "defence") {
+        showMsg("加防成功！");
+      }
+      $('#kingMsgSHow').hide();
+      $('#userActionBox').hide();
+      setTimeout(function() {
+        getKingdomMsg();
+      }, 1000)
+
+    }).catch(e => {
+
+      eosErrorShow(e);
+    });
+  })
+}
+
+function getUserOnKingAct(num) {
+  var tag = '--';
+  // $.each(myknightMsg,function(i,n){
+  //   if(num == (i+1) ){
+  //     tag = n.totalact;
+  //   }
+  // })
+  if (myknightMsg) {
+    if (myknightMsg[num]) {
+      tag = myknightMsg[num].freeact;
+    }
+  }
+
+  // console.log(tag,num,)
+  return tag;
 }
