@@ -100,12 +100,12 @@ function showWarReport() {
         html += '<p>这里是城市正中心,一个很宽阔的广场 ，中央有颗大榕树 ，据传已经有千年大树龄 ，是这座城市大历史 见证，树干大底部有个很大大树洞 </p>'
         html += '</div>'
         html += '<div class="middle">'
-        html += '<ul>'
-        html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span> 3455</span></li>'
-        html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
-        html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
-        html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
-        html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
+        html += '<ul id="battlelog-list">'
+        // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span> 3455</span></li>'
+        // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
+        // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
+        // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
+        // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
         html += '</ul>'
         html += '</div>'
         html += '<div class="btn-group">'
@@ -211,6 +211,7 @@ function getBattleLog() {
       }
       battlelogShow(memo, n.id);
 
+      console.log('memo:',memo);
     })
 
     console.log("战斗记录:", data);
@@ -223,11 +224,12 @@ function getBattleLog() {
  * @return {*}
  */
 function battlelogShow(msg, id) {
+  var log = Number(getCookie("battlelog2")) || 0;
+  var logArray=[]
   if ($("#battlelog_" + id).length == 0) {
     var html = '';
-    var log = Number(getCookie("battlelog2")) || 0;
+    var html2 = ''
     if (id != log) {
-
       html += '<div id="battlelog_' + id + '" class="msgCon2" style="/* display: none; */">';
       html += '  <p class="msg">' + msg + '</p>';
       html += '</div>';
@@ -238,13 +240,14 @@ function battlelogShow(msg, id) {
       }, 6800, function() {
         $("#battlelog_" + id).fadeOut().remove();
       });
+      html2 += '<li>'+msg+'</li>'
+      $("#battlelog-list").append(html2)
       // setCookie("battlelog",log+1);
       setCookie("battlelog2", id);
       setCookie("battlelog", '');
     }
 
   }
-
 }
 
 
