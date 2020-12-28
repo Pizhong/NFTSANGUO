@@ -58,7 +58,7 @@
                 <p class="box1-p1">魏国驻军</p>
                 <p class="box1-p2" id="actionPoint1" style="display:none;">--</p>
                 <!-- <img class="box1-img1" src="../image/zhanchan-box1.png" alt=""> -->
-                <div class="box1-img" onclick="showBattleTarget(1)"></div>
+                <div class="box1-img" onclick="zhanchang.showBattleTarget(1)"></div>
                 <img src="../image/wei-flag.png" class="box1-flag">
                 <div class="box1-jianli-che">
                     <img src="../image/che.png" alt="">
@@ -70,9 +70,9 @@
             <div class="main-box2">
                 <p class="box2-p1">吴国驻军</p>
                 <p class="box2-p2" id="actionPoint3" style="display:none;">--</p>
-                <div class="box2-img" onclick="showBattleTarget(3)"></div>
+                <div class="box2-img" onclick="zhanchang.showBattleTarget(3)"></div>
                 <img src="../image/wu-flag.png" class="box2-flag">
-                <div class="box1-jianli-che" >
+                <div class="box1-jianli-che">
                     <img src="../image/che.png" alt="">
                     <p><span id="burse2" style="
                       border-bottom: 1px solid #fff;
@@ -81,7 +81,7 @@
             </div>
             <div class="main-box3">
                 <p class="box3-p">州城-洛阳</p>
-            </div>  
+            </div>
             <div class="main-box4">
                 <div class="main-box4-1">
                     <p class="box4-1-p1">蜀国驻军</p>
@@ -90,7 +90,7 @@
             <img src="../image/zhu.png" alt="">
             <p>x4</p>
           </div> -->
-                    <div class="box4-img-1" onclick="showBattleTarget(2)"></div>
+                    <div class="box4-img-1" onclick="zhanchang.showBattleTarget(2)"></div>
                 </div>
                 <!-- <div class="main-box4-2">
           <p class="box4-2-p1">要塞13</p>
@@ -101,7 +101,7 @@
           <div class="box4-img-2" onclick="showBattleTarget()"></div>
 
         </div> -->
-                <div class="box1-jianli-che"  style="top:169px">
+                <div class="box1-jianli-che" style="top:169px">
                     <img src="../image/che.png" alt="">
                     <p><span id="burse3" style="
                       border-bottom: 1px solid #fff;
@@ -117,8 +117,10 @@
                 <p style="margin-top: 5px;">行动力 : <span>(<span id="supplyACT1"></span> / <span id="totalACT1"></span> )</span>
                 </p>
                 <p class="blod-box3-p">
-                    <span>行动点</span>
-                    <img src="../image/btn-1.png" class="btn-1" alt="" onclick="getActionPotint(1)">
+                    <span>行动点：</span>
+                    <span id="callable-action-points"></span>
+                    <img src="../image/btn-1.png" class="btn-1" id="box1-btn" onclick="zhanchang.getActionPotint(event, 1)">
+                    <img src="../image/btn-1.png" class="btn-1" id="box-btn-1" style="display: none;" onclick="zhanchang.receiveActionPonit(event, 1)">
                 </p>
             </div>
             <div class="blod-box2 blod-box">
@@ -129,8 +131,10 @@
                 <p style="margin-top: 5px;">行动力 : <span>(<span id="supplyACT2"></span> / <span id="totalACT2"></span> )</span>
                 </p>
                 <p class="blod-box3-p">
-                    <span>行动点</span>
-                    <img src="../image/btn-1.png" class="btn-1" alt="" onclick="getActionPotint(3)">
+                    <span>行动点：</span>
+                    <span id="callable-action-points"></span>
+                    <img src="../image/btn-1.png" class="btn-1" id="box3-btn" alt="" onclick="zhanchang.getActionPotint(event,3)">
+                    <img src="../image/btn-1.png" class="btn-1" id="box-btn-3" style="display: none;" onclick="zhanchang.receiveActionPonit(event, 3)">
                 </p>
             </div>
             <div class="blod-box3 blod-box">
@@ -141,8 +145,10 @@
                 <p style="margin-top: 5px;">行动力 : <span>(<span id="supplyACT3"></span> / <span id="totalACT3"></span> )</span>
                 </p>
                 <p class="blod-box3-p">
-                    <span>行动点</span>
-                    <img src="../image/btn-1.png" class="btn-1" alt="" onclick="getActionPotint(2)">
+                    <span>行动点：</span>
+                    <span id="callable-action-points"></span>
+                    <img src="../image/btn-1.png" class="btn-1" id="box2-btn" alt="" onclick="zhanchang.getActionPotint(event,2)">
+                    <img src="../image/btn-1.png" class="btn-1" id="box-btn-2" style="display: none;" onclick="zhanchang.receiveActionPonit(event, 2)">
                 </p>
             </div>
             <!-- <div class="jianli">
@@ -167,10 +173,10 @@
             <!-- </div> -->
             <div class="all-icon-right-top">
                 <ul>
-                    <li><img src="../image/right-top-icon-1.png" alt="" onclick="showWarReport()"></li>
+                    <li><img src="../image/right-top-icon-1.png" alt="" onclick="zhanchang.showWarReport()"></li>
                     <!--战报-->
                     <!-- <li><img src="../image/right-top-icon-2.png" alt=""></li>任务 -->
-                    <li><img src="../image/left-icon-2.png" alt="" onclick="showActionMessage()" id="battle-target" style="display: none;"></li>
+                    <li><img src="../image/left-icon-2.png" alt="" onclick="zhanchang.showActionMessage()" id="battle-target" style="display: none;"></li>
                     <!--战斗目标-->
                 </ul>
             </div>
@@ -191,7 +197,7 @@
             <!-- </ul> -->
             <!-- </div> -->
         </div>
-        <img src="../image/goback.png" alt="" class="goback" onclick="gobackIndex()">
+        <img src="../image/goback.png" alt="" class="goback" onclick="zhanchang.gobackIndex()">
     </div>
 </body>
 
@@ -203,8 +209,8 @@
 <script type="text/javascript" src="../js/common.js?v=2020120117"></script>
 <script type="text/javascript" src="../js/eos-base.js?v=2020120117"></script>
 <script type="text/javascript" src="../js/data-api.js?v=2020120117"></script>
-<!-- <script type="text/javascript" src="../js/common.js"></script> -->
+<script type="text/javascript" src="../js/common.js"></script>
 <script type="text/javascript" src="../js/index.js?v=2020120118"></script>
-<script type="text/javascript" src="../js/zhanchan.js?v=20201219"></script>
+<script type="module" src="../js/zhanchan.js?v=20201219"></script>
 
 </html>
