@@ -5,7 +5,7 @@
  * @param {*} api 请求地址
  * @param {*} selfData 请求发送数据
  * @param {*} num 类型
- * @return {*}
+ * @return {*} Promise
  */
 function getKnightMsg(api, selfData, num) {
     return new Promise(resolve => {
@@ -39,14 +39,14 @@ function getKnightMsg(api, selfData, num) {
                 // console.log(times, 'times');
                 // console.log(balance, 'balance');
                 // console.log(myMiningAct, 'act');
-                var MiningAct = ''
+                var MiningAct = '';
                 MiningAct = new CountUp("callable-action-points" + num, 0, 0.00000000, 8, 3, zhanchang.options)
                     // $('#callable-action-points').html(Number(myMiningAct))
                 MiningAct.update(Number(myMiningAct))
             }
 
-            return Promise.resolve();
         }
+        return Promise.resolve();
     })
 }
 
