@@ -58,6 +58,7 @@ var userActionKing = 1;
 var userActionType = '';
 var userActionsOnKing = 1;
 var globalCountry = '';
+var battlelogTimer = '' //battlelog定时器
 // 数字格式化
 function numberFormat(num) {
     if (num >= 100000000) {
@@ -276,6 +277,7 @@ async function getMyknightMsg(num) {
                 console.log(times, 'times');
                 console.log(balance, 'balance');
                 console.log(myMiningAct, 'act');
+
                 var MiningAct = ''
                 MiningAct = new CountUp("callable-action-points", 0, 0.00000000, 8, 3, options)
                     // $('#callable-action-points').html(Number(myMiningAct))
@@ -442,6 +444,12 @@ function getUserOnKingAct(num) {
     return tag;
 }
 
+battlelogTimer = setInterval(function() {
+  domData.getBattleLog();
+}, 3000)
+
+
+
 // module引入文件不会暴露到全局，需要通过window对象引出
 window.zhanchang = {
     getActionPotint,
@@ -470,4 +478,5 @@ window.zhanchang = {
     userActionType,
     userActionsOnKing,
     globalCountry,
+    battlelogTimer
 }

@@ -115,9 +115,7 @@ $(function() {
   }, 5000)
 
   // clearInterval(battlelogTimer);
-  battlelogTimer = setInterval(function() {
-    // getBattleLog();
-  }, 3000)
+  
   // getMyNftList();
 })
 
@@ -522,7 +520,7 @@ $("#select5").mouseenter(function(){
 
 $("#select1").mouseleave(function(){
   $(this).attr("src",'./image/bottom1.png')
-  $(this).css("margin-top","13px")
+  
 })
 $("#select2").mouseleave(function(){
   $(this).attr("src",'./image/bottom2.png')

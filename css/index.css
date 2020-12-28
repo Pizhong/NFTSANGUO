@@ -310,11 +310,8 @@ header{
 }
 .bottom ul li {
   float: left;
-  margin-right: 12px;
+ margin-top: 10px;
   cursor: pointer;
-}
-.bottom ul li:first-of-type{
-  margin-left: 15px;
 }
 
 
