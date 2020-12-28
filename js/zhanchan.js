@@ -1,4 +1,5 @@
 import domData from "../domData/zhanchang.js";
+import zhanchangApi from "../requestApi/zhanchangApi.js";
 
 
 var actionPoint = '' //行动点
@@ -74,9 +75,9 @@ function numberFormat(num) {
 }
 
 // 弹窗显示可领取行动点
-function getActionPotint(event, num) {
-    $(event.target).hide();
-    $("#box-btn-" + num).show();
+function getActionPotint(num) {
+    // $(event.target).hide();
+    // $("#box-btn-" + num).show();
     getMyknightMsg(num);
 }
 
@@ -87,9 +88,9 @@ function closeActionPointMsg() {
 
 //领取行动点
 function receiveActionPonit(event, num) {
-    $(event.target).hide();
-    $("#box" + num + "-btn").show();
-    mining(globalNum)
+    // $(event.target).hide();
+    // $("#box" + num + "-btn").show();
+    mining(zhanchang.globalNum)
 }
 
 
@@ -97,9 +98,9 @@ function receiveActionPonit(event, num) {
 // 显示战斗目标信息
 async function showActionMessage() {
     domData.showActionMessage();
-    await getMyknightMsg(globalCountry);
-    $('#action-get').html(Number(myknightMsg[globalCountry].freeact) / 100000000)
-    $('#action-totalPower').html(myknightMsg[globalCountry].power)
+    await getMyknightMsg(zhanchang.globalCountry);
+    $('#action-get').html(Number(zhanchang.myknightMsg[zhanchang.globalCountry].freeact) / 100000000)
+    $('#action-totalPower').html(zhanchang.myknightMsg[zhanchang.globalCountry].power)
 
     $("#action-message").show();
 }
@@ -111,8 +112,8 @@ function gobackIndex() {
 
 //显示战斗目标图标
 function showBattleTarget(num) {
-    $("#battle-target").show()
-    globalCountry = num
+    $("#battle-target").show();
+    zhanchang.globalCountry = num;
 }
 
 //行动点更新
@@ -129,15 +130,15 @@ function updateActionPoint() {
         limit: 10,
         reverse: false,
         show_payer: false,
-    }
-
+    };
+    //commonjs方法
     getLinkData(api, selfData, function(data) {
         for (const x in data.rows) {
-            objMsg[x] = data["rows"][x];
-            objMsg[x].supplyACT = Math.floor(Number(parseFloat(objMsg[x].supplyACT) / Math.pow(10, 8)));
-            objMsg[x].totalACT = Math.floor(Number(parseFloat(objMsg[x].totalACT) / Math.pow(10, 8)));
+            zhanchang.objMsg[x] = data["rows"][x];
+            zhanchang.objMsg[x].supplyACT = Math.floor(Number(parseFloat(zhanchang.objMsg[x].supplyACT) / Math.pow(10, 8)));
+            zhanchang.objMsg[x].totalACT = Math.floor(Number(parseFloat(zhanchang.objMsg[x].totalACT) / Math.pow(10, 8)));
             console.log(numberFormat(objMsg[x].totalHP));
-            $.each(sanguoMsg, function(i, n) {
+            $.each(zhanchang.sanguoMsg, function(i, n) {
                 console.log('each', i, n)
                 if (Number(x) == Number(n.id - 1)) {
                     // if (typeof n.hp != 'object') {
@@ -146,14 +147,14 @@ function updateActionPoint() {
                     // n.hp.update(obj[x].hp);
 
                     if (typeof n.totalHP != 'object') {
-                        n.totalHP = new CountUp("totalHp" + Number(n.id), 0, 0, 0, 3, options);
+                        n.totalHP = new CountUp("totalHp" + Number(n.id), 0, 0, 0, 3, zhanchang.options);
                     }
                     n.totalHP.update(objMsg[x].totalHP);
 
                     if (typeof n.def != 'object') {
-                        n.def = new CountUp("def" + Number(n.id), 0, 0, 0, 3, options);
+                        n.def = new CountUp("def" + Number(n.id), 0, 0, 0, 3, zhanchang.options);
                     }
-                    n.def.update(objMsg[x].def);
+                    n.def.update(zhanchang.objMsg[x].def);
 
                     // if (typeof n.brokencount != 'object') {
                     //   n.brokencount = new CountUp("sanguoBrokencount_0" + Number(n.id), 0, 0, 0, 3, options);
@@ -168,15 +169,15 @@ function updateActionPoint() {
                     // n.totalpower.update(obj[x].totalpower);
 
                     if (typeof n.supplyACT != 'object') {
-                        n.supplyACT = new CountUp("supplyACT" + Number(n.id), 0, 0, 0, 3, options);
+                        n.supplyACT = new CountUp("supplyACT" + Number(n.id), 0, 0, 0, 3, zhanchang.options);
                     }
-                    n.supplyACT.update(objMsg[x].supplyACT);
+                    n.supplyACT.update(zhanchang.objMsg[x].supplyACT);
 
                     if (typeof n.totalACT != 'object') {
-                        n.totalACT = new CountUp("actionPoint" + Number(n.id), 0, 0, 0, 3, options);
+                        n.totalACT = new CountUp("actionPoint" + Number(n.id), 0, 0, 0, 3, zhanchang.options);
 
                     }
-                    n.totalACT.update(objMsg[x].totalACT);
+                    n.totalACT.update(zhanchang.objMsg[x].totalACT);
 
 
                     if (typeof n.burse != 'object') {
@@ -186,11 +187,11 @@ function updateActionPoint() {
                             separator: ',',
                             decimal: '.',
                             prefix: '',
-                            suffix: ' ' + String(objMsg[x].burse).split(' ')[1]
+                            suffix: ' ' + String(zhanchang.objMsg[x].burse).split(' ')[1]
                         });
 
                     }
-                    n.burse.update(parseFloat(objMsg[x].burse));
+                    n.burse.update(parseFloat(zhanchang.objMsg[x].burse));
 
                     if (typeof n.burse2 != 'object') {
                         n.burse2 = new CountUp("burse2" + Number(n.id), 0, 0.0000, 4, 3, {
@@ -199,15 +200,15 @@ function updateActionPoint() {
                             separator: ',',
                             decimal: '.',
                             prefix: '',
-                            suffix: ' ' + String(objMsg[x].burse2).split(' ')[1]
+                            suffix: ' ' + String(zhanchang.objMsg[x].burse2).split(' ')[1]
                         });
 
                     }
-                    n.burse2.update(parseFloat(objMsg[x].burse2));
+                    n.burse2.update(parseFloat(zhanchang.objMsg[x].burse2));
                 }
             })
         }
-        if (objMsg == '') {
+        if (zhanchang.objMsg == '') {
             return
         }
         setTimeout(() => {
@@ -223,17 +224,20 @@ function updateActionPoint() {
             document.getElementById("def2").innerHTML = numberFormat(document.getElementById("def2").innerHTML)
             document.getElementById("def3").innerHTML = numberFormat(document.getElementById("def3").innerHTML)
         }, 3100)
-    })
+    });
+    getActionPotint(1);
+    getActionPotint(2);
+    getActionPotint(3);
 }
 
 
 
 
-$(document).ready(updateActionPoint())
+
 
 // 获取行动点数据
 async function getMyknightMsg(num) {
-    globalNum = num
+    zhanchang.globalNum = num;
 
     var api = get_random_api();
     var selfData = {
@@ -247,6 +251,7 @@ async function getMyknightMsg(num) {
         limit: 1,
         reverse: false,
         show_payer: false,
+<<<<<<< HEAD
     }
     await $.post(api + "/v1/chain/get_table_rows", JSON.stringify(selfData)).then(function(data, status) {
         for (const x in data["rows"]) {
@@ -287,6 +292,10 @@ async function getMyknightMsg(num) {
             return Promise.resolve();
         }
     });
+=======
+    };
+    await zhanchangApi.getKnightMsg(api, selfData, num);
+>>>>>>> d4f9ac177dcbc2d16d72f3735c9a729ec1fb705f
 }
 
 //收取行动点
@@ -323,12 +332,11 @@ function mining(num) {
         }).then(res => {
             alert("收取行动点成功！");
             setTimeout(function() {
-                getMyknightMsg(num);
+                zhanchang.getMyknightMsg(num);
             }, 500)
 
             // $('#stacknftBox').hide();
         }).catch(e => {
-
             eosErrorShow(e);
         });
     })
@@ -340,7 +348,7 @@ function mining(num) {
  * @return {*}
  */
 function selectAction(type) {
-    userActionType = type;
+    zhanchang.userActionType = userActionType = type;
 }
 
 /**
@@ -348,19 +356,27 @@ function selectAction(type) {
  * @param {*} king number [1-3]
  * @return {*}
  */
-function selectCountry(king) {
-    userActionKing = king
-    userActionsOnKing = king;
-    getMyknightMsg(king);
+async function selectCountry(king) {
+    zhanchang.userActionKing = king
+    zhanchang.userActionsOnKing = king;
+    await getMyknightMsg(king);
 }
 
-
+/**
+ * @msg: 战斗目标预估效果
+ * @param {*}
+ * @return {*}
+ */
 function estimatedResultShow() {
     domData.estimatedResultShow();
 }
 
 
-
+/**
+ * @msg: 确认战斗操作
+ * @param {*}
+ * @return {*}
+ */
 function userActionOK() {
     if (userActionsOnKing == '') {
         showMsg("请选择目标国家");
@@ -385,13 +401,13 @@ function userActionOK() {
         var selfData = {
             acc: fromUser,
             actpoint: actpoint,
-            fromkingdom: userActionKing,
-            tokingdom: userActionsOnKing
+            fromkingdom: zhanchang.userActionKing,
+            tokingdom: zhanchang.userActionsOnKing
         }
 
         var actions = [{
             account: kingContractName,
-            name: userActionType,
+            name: zhanchang.userActionType,
             authorization: authorization,
             data: selfData
         }];
@@ -406,9 +422,9 @@ function userActionOK() {
                 showMsg("加防成功！");
             }
 
-            setTimeout(function() {
-                getKingdomMsg();
-            }, 1000)
+            // setTimeout(function() {
+            //     getKingdomMsg();
+            // }, 1000)
 
         }).catch(e => {
 
@@ -417,6 +433,11 @@ function userActionOK() {
     })
 }
 
+/**
+ * @msg: 根据数值返回国家名称
+ * @param {*} num number
+ * @return {*}
+ */
 function getKingName(num) {
     var tag = '魏国';
     switch (String(num)) {
@@ -436,9 +457,9 @@ function getKingName(num) {
 
 function getUserOnKingAct(num) {
     var tag = '--';
-    if (myknightMsg) {
-        if (myknightMsg[num]) {
-            tag = myknightMsg[num].freeact;
+    if (zhanchang.myknightMsg) {
+        if (zhanchang.myknightMsg[num]) {
+            tag = zhanchang.myknightMsg[num].freeact;
         }
     }
     return tag;
@@ -452,6 +473,7 @@ battlelogTimer = setInterval(function() {
 
 // module引入文件不会暴露到全局，需要通过window对象引出
 window.zhanchang = {
+    //方法
     getActionPotint,
     closeActionPointMsg,
     receiveActionPonit,
@@ -467,6 +489,7 @@ window.zhanchang = {
     getMyknightMsg,
     getUserOnKingAct,
     getKingName,
+    updateActionPoint,
     // 变量
     actionPoint,
     sanguoMsg,
@@ -478,5 +501,10 @@ window.zhanchang = {
     userActionType,
     userActionsOnKing,
     globalCountry,
+<<<<<<< HEAD
     battlelogTimer
 }
+=======
+}
+$(document).ready(updateActionPoint())
+>>>>>>> d4f9ac177dcbc2d16d72f3735c9a729ec1fb705f
