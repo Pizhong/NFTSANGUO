@@ -3,7 +3,7 @@ import zhanchangApi from "../requestApi/zhanchangApi.js";
 
 
 var actionPoint = '' //行动点
-var sanguoMsg = {
+var sanguoMsg = { //三国基本信息
     'sanguo_01': {
         'id': 1,
         'hp': '',
@@ -44,7 +44,7 @@ var sanguoMsg = {
         'period': ''
     }
 }
-var objMsg = []
+var objMsg = [];
 var options = {
     useEasing: true, //使用缓和效果
     useGrouping: false, //使用分组效果
@@ -59,7 +59,7 @@ var userActionKing = 1;
 var userActionType = '';
 var userActionsOnKing = 1;
 var globalCountry = '';
-var battlelogTimer = '' //battlelog定时器
+var battlelogTimer = ''; //battlelog定时器
 // 数字格式化
 function numberFormat(num) {
     if (num >= 100000000) {
@@ -149,7 +149,7 @@ function updateActionPoint() {
                     if (typeof n.totalHP != 'object') {
                         n.totalHP = new CountUp("totalHp" + Number(n.id), 0, 0, 0, 3, zhanchang.options);
                     }
-                    n.totalHP.update(objMsg[x].totalHP);
+                    n.totalHP.update(zhanchang.objMsg[x].totalHP);
 
                     if (typeof n.def != 'object') {
                         n.def = new CountUp("def" + Number(n.id), 0, 0, 0, 3, zhanchang.options);
@@ -423,7 +423,7 @@ function getUserOnKingAct(num) {
 }
 
 battlelogTimer = setInterval(function() {
-  domData.getBattleLog();
+    domData.getBattleLog();
 }, 3000)
 
 
