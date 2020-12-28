@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
- <h ead>
-      <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
     <!-- <meta name="viewport" content="width=device-width,width=750px,minimum-scale=0.36, user-scalable=no"> -->
@@ -13,55 +12,54 @@
     <link rel="icon" href="image/favicon.png">
     <title>三国争霸</title>
     <link rel="stylesheet" type="text/css" href="./css/common.css">
-    <li
-nk rel="stylesheet" type="text/css" href="./css/index.css?v=20201215">
+    <link rel="stylesheet" type="text/css" href="./css/index.css?v=20201215">
 </head>
-  
-<bod    y>
-         <d iv class="app">
-                <header>
-                    <div class="head-top">
-                        <div class="header-top-left">
-                            <img src="./image/jues-small.png" style="position: absolute;top: 5px;left: 5px;" onclick="getMenuPanel()">
+
+<body>
+    <div class="app">
+        <header>
+            <div class="head-top">
+                <div class="header-top-left">
+                    <img src="./image/jues-small.png" style="position: absolute;top: 5px;left: 5px;" onclick="getMenuPanel()">
+                </div>
+                <div class="flex header-top-right">
+                    <div class="box1">
+                        <div class="box1-left">
+                            <!-- <img src="./image/head_icon1.png" alt=""> -->
+                            <span class="myName" style="font-size: 20px;"></span>
                         </div>
-                          <div class="flex header-top-right">
-                                <div class="box1">
-                                    <div class="box1-left">
-                                      <!-- <img src="./image/head_icon1.png" alt=""> -->
-                                      <span class="myName" style="font-size: 20px;"></span>
-                                </div>
-                                <!-- <div class="box1-right">208596</div> -->
-                              </div>
-                                <div class="box2">
-                                  <div class="box2-left">
-                                      <img src="./image/head_icon2_small.png" alt="">
-                                  </div>
+                        <!-- <div class="box1-right">208596</div> -->
+                    </div>
+                    <div class="box2">
+                        <div class="box2-left">
+                            <img src="./image/head_icon2_small.png" alt="">
+                        </div>
                         <div class="box2-midd">--</div>
                         <!-- <div class="box2-right">
                 <img src="./image/add_button.png" alt="">
-                        <img src="./image/red_circle.png" alt="" style="position: absolute;top: -5px;left: 25px;">
-                      </div> -->
-                              </div>
-                                <div class="box3">
-                                  <div class="box3-left">
-                                      <img src="./image/head_icon3_small.png" alt="">
-                                  </div>
+                <img src="./image/red_circle.png" alt="" style="position: absolute;top: -5px;left: 25px;">
+              </div> -->
+                    </div>
+                    <div class="box3">
+                        <div class="box3-left">
+                            <img src="./image/head_icon3_small.png" alt="">
+                        </div>
                         <div class="box3-midd">--</div>
                         <!-- <div class="box3-right">
                 <img src="./image/add_button.png" alt="">
-                        <img src="./image/red_circle.png" alt="" style="position: absolute;top: -5px;left: 25px;">
-                      </div> -->
-                            </div>
-                      </div>
-                      <div class="progress_bar"></div>
+                <img src="./image/red_circle.png" alt="" style="position: absolute;top: -5px;left: 25px;">
+              </div> -->
                     </div>
-                    <div class="top-bar">
-                        <p><span class="myName"></span>昭告天下</p>
-                      <p id="zhaogao-content">魏国的统统加血，其他的事情我来解决</p>
-                    <img src="./image/edit.png" alt="" class="top-bar-edit" onclick="getShowPublicly()">
                 </div>
-              </header>
-                <div class="main flex">
+                <div class="progress_bar"></div>
+            </div>
+            <div class="top-bar">
+                <p><span class="myName"></span>昭告天下</p>
+                <p id="zhaogao-content">魏国的统统加血，其他的事情我来解决</p>
+                <img src="./image/edit.png" alt="" class="top-bar-edit" onclick="getShowPublicly()">
+            </div>
+        </header>
+        <div class="main flex">
             <ul id="main-huihe">
                 <!-- <li class="main-first" id="main-content">
           <div class="huihe"><span>第13回 辕门射戟</span></div>
@@ -77,7 +75,7 @@ nk rel="stylesheet" type="text/css" href="./css/index.css?v=20201215">
           </div>
           <div class="time">
             <p>开始时间：&nbsp;2020-12-01 20:00:00 - 2020-12-08 20:00:00 </p>
-                  </div>
+          </div>
         </li> -->
                 <!-- <li class="main-second">
           <div class="huihe"><span>第14回 宛城之变</span></div>
@@ -89,13 +87,13 @@ nk rel="stylesheet" type="text/css" href="./css/index.css?v=20201215">
             <img src="./image//time.png" alt="" class="jianli-time">
             <span class="time-text">>9999TIME</span>
 
-            </  div>
-             <d iv class="status" style="top: 180px;font-size: 24px;color:#307a42 ;"> -->
+          </div>
+          <div class="status" style="top: 180px;font-size: 24px;color:#307a42 ;"> -->
                 <!-- <img src="./image/keep.png" alt=""> -->
                 <!-- <p>进行中...</p>
           </div>
           <div class="time">
-                  <p>开始时间：&nbsp;2020-12-01 20:00:00 - 2020-12-08 20:00:00 </p>
+            <p>开始时间：&nbsp;2020-12-01 20:00:00 - 2020-12-08 20:00:00 </p>
           </div> -->
                 <!-- <div class="guaji">
             <span class="shouyi">挂机收益:</span>
@@ -104,7 +102,7 @@ nk rel="stylesheet" type="text/css" href="./css/index.css?v=20201215">
               <li><img src="./image/guaji-icon2.png" alt=""><span>425/m</span></li>
               <li><img src="./image/guaji-icon3.png" alt=""><span>600/m</span></li>
               <li><img src="./image/guaji-icon4.png" alt=""><span>11/m</span></li>
-                    </ul>
+            </ul>
           </div> -->
                 <!-- </li>
         <li class="main-third">
@@ -119,11 +117,11 @@ nk rel="stylesheet" type="text/css" href="./css/index.css?v=20201215">
 
           </div>
           <div class="status" style="top: 180px;font-size: 24px;color:#307a42 ;">
-                  <p>挂机中...（4/10）</p>
-            <!-- <p>进行中</p> -->
+            <p>挂机中...（4/10）</p>
+             <p>进行中</p> -->
                 <!-- </div>
           <div class="time">
-                  <p>开始时间：&nbsp;2020-12-01 20:00:00 - 2020-12-08 20:00:00 </p>
+            <p>开始时间：&nbsp;2020-12-01 20:00:00 - 2020-12-08 20:00:00 </p>
           </div>  -->
                 <!-- <div class="guaji">
             <span class="shouyi">挂机收益:</span>
@@ -132,41 +130,41 @@ nk rel="stylesheet" type="text/css" href="./css/index.css?v=20201215">
               <li><img src="./image/guaji-icon2.png" alt=""><span>425/m</span></li>
               <li><img src="./image/guaji-icon3.png" alt=""><span>600/m</span></li>
               <li><img src="./image/guaji-icon4.png" alt=""><span>11/m</span></li>
-                    </ul>
-                </div> -->
-                    <!-- </li> -->
-                </ul>
-              </div>
-                <div class="bottom">
-                    <ul>
-                        <li><img src="./image/bottom1.png" id="select1" style="margin-top:13px;" onclick="goMyArms()"></li>
-                        <li><img src="./image/bottom2.png" id="select2" style="margin-top:13px;" onclick="goZhanChan()"></li>
-                        <li><img src="./image/bottom3.png" id="select3" style="margin-top: 13px;" onclick="goArmory()"></li>
-                        <li><img src="./image/botto4.png" id="select4" style="margin-top:12px;" onclick="goSmithy()"></li>
-                      <li><img src="./image/bottom5.png" id="select5" style="margin-top:10px;" onclick="goAlliance()"></li>
-                    <li><img src="./image/bottom6.png" style="margin-top:10px;" onclick="goIndex()"></li>
-              </ul>
-          </div>
+            </ul>
+          </div> -->
+                <!-- </li> -->
+            </ul>
         </div>
-         <d iv class="alert" id="descriptionMsgBox" style="display: none;">
-                <div class="flex" style="height:100%;">
-                      <div class="content" style="padding-bottom: 20px;">
-                          <div class="header flex">
+        <div class="bottom">
+            <ul>
+                <li><img src="./image/bottom1.png" id="select1" style="margin-top:13px;" onclick="goMyArms()"></li>
+                <li><img src="./image/bottom2.png" id="select2" style="margin-top:13px;" onclick="goZhanChan()"></li>
+                <li><img src="./image/bottom3.png" id="select3" style="margin-top: 13px;" onclick="goArmory()"></li>
+                <li><img src="./image/bottom4.png" id="select4" style="margin-top:12px;" onclick="goSmithy()"></li>
+                <li><img src="./image/bottom5.png" id="select5" style="margin-top:10px;" onclick="goAlliance()"></li>
+                <li><img src="./image/bottom6.png" style="margin-top:10px;" onclick="goIndex()"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="alert" id="descriptionMsgBox" style="display: none;">
+        <div class="flex" style="height:100%;">
+            <div class="content" style="padding-bottom: 20px;">
+                <div class="header flex">
                     <span style="flex:1;"></span>
-                              <span class="desTitle" style="flex:1.3;">说明</span>
+                    <span class="desTitle" style="flex:1.3;">说明</span>
 
                     <span onclick="$('#descriptionMsgBox').hide()">
-                    <img src="image/closes1.png" alt="" class="closeSvg">
-                  </span>
-                          </div>
-                          <div class="stackCountryBox">
-                            <div style="height: 526px;line-height:25px;overflow-y: auto;background:url(./image/bglist.png) no-repeat;padding-left: 10px;">
-                            </div>
-                          </div>
-                        <div class="flex">
-                          <div class="actionBtn" onclick="$('#descriptionMsgBox').hide()"></div>
+            <img src="image/closes1.png" alt="" class="closeSvg">
+          </span>
+                </div>
+                <div class="stackCountryBox">
+                    <div style="height: 526px;line-height:25px;overflow-y: auto;background:url(./image/bglist.png) no-repeat;padding-left: 10px;">
                     </div>
-              </div>
+                </div>
+                <div class="flex">
+                    <div class="actionBtn" onclick="$('#descriptionMsgBox').hide()"></div>
+                </div>
+            </div>
         </div>
     </div>
 
