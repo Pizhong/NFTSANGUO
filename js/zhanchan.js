@@ -251,51 +251,8 @@ async function getMyknightMsg(num) {
         limit: 1,
         reverse: false,
         show_payer: false,
-<<<<<<< HEAD
-    }
-    await $.post(api + "/v1/chain/get_table_rows", JSON.stringify(selfData)).then(function(data, status) {
-        for (const x in data["rows"]) {
-
-            if (data["rows"][x].acc == getCookie("account")) {
-                myknightMsg[num] = data["rows"][x];
-                console.log(myknightMsg, 'getMykni')
-                var balance = '';
-                var times = 0;
-                var myMiningAct;
-                var proportion;
-                $.each(objMsg, function(i, n) {
-                    if (n.id == num) {
-                        console.log(n, 'n');
-                        balance = (n.totalACT - n.supplyACT) / n.period;
-                        proportion = myknightMsg[num].power / n.totalpower;
-                    }
-                })
-                console.log(objMsg[0].period);
-                if (getUTCTime(objMsg[0].start) > objMsg[0].period) {
-                    times = objMsg[0].period - (getUTCTime(objMsg[0].start) - getUserUTC(myknightMsg[num].lastdriptime))
-
-                } else if (myknightMsg[num].lastdriptime) {
-                    times = getUserUTC(myknightMsg[num].lastdriptime);
-                }
-
-                myMiningAct = balance * times * proportion;
-                console.log(times, 'times');
-                console.log(balance, 'balance');
-                console.log(myMiningAct, 'act');
-
-                var MiningAct = ''
-                MiningAct = new CountUp("callable-action-points", 0, 0.00000000, 8, 3, options)
-                    // $('#callable-action-points').html(Number(myMiningAct))
-                MiningAct.update(Number(myMiningAct))
-            }
-
-            return Promise.resolve();
-        }
-    });
-=======
     };
     await zhanchangApi.getKnightMsg(api, selfData, num);
->>>>>>> d4f9ac177dcbc2d16d72f3735c9a729ec1fb705f
 }
 
 //收取行动点
@@ -501,10 +458,7 @@ window.zhanchang = {
     userActionType,
     userActionsOnKing,
     globalCountry,
-<<<<<<< HEAD
     battlelogTimer
-}
-=======
+
 }
 $(document).ready(updateActionPoint())
->>>>>>> d4f9ac177dcbc2d16d72f3735c9a729ec1fb705f
