@@ -74,9 +74,9 @@ function numberFormat(num) {
 }
 
 // 弹窗显示可领取行动点
-function getActionPotint(event, num) {
-    $(event.target).hide();
-    $("#box-btn-" + num).show();
+function getActionPotint(num) {
+    // $(event.target).hide();
+    // $("#box-btn-" + num).show();
     getMyknightMsg(num);
 }
 
@@ -87,8 +87,8 @@ function closeActionPointMsg() {
 
 //领取行动点
 function receiveActionPonit(event, num) {
-    $(event.target).hide();
-    $("#box" + num + "-btn").show();
+    // $(event.target).hide();
+    // $("#box" + num + "-btn").show();
     mining(zhanchang.globalNum)
 }
 
@@ -223,17 +223,20 @@ function updateActionPoint() {
             document.getElementById("def2").innerHTML = numberFormat(document.getElementById("def2").innerHTML)
             document.getElementById("def3").innerHTML = numberFormat(document.getElementById("def3").innerHTML)
         }, 3100)
-    })
+    });
+    getActionPotint(1);
+    getActionPotint(2);
+    getActionPotint(3);
 }
 
 
 
 
-$(document).ready(updateActionPoint())
+
 
 // 获取行动点数据
 async function getMyknightMsg(num) {
-    zhanchang.globalNum = num
+    zhanchang.globalNum = num;
 
     var api = get_random_api();
     var selfData = {
@@ -290,7 +293,6 @@ function mining(num) {
 
             // $('#stacknftBox').hide();
         }).catch(e => {
-
             eosErrorShow(e);
         });
     })
@@ -450,3 +452,4 @@ window.zhanchang = {
     userActionsOnKing,
     globalCountry,
 }
+$(document).ready(updateActionPoint())
