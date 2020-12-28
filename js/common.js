@@ -93,7 +93,7 @@ function currencyBalance(eosName){
     symbol: 'EOS'
   })
     .then(result => {
-      console.log(result)
+      console.log(result,'res')
       getBalance(result)
     })
     .catch(error => console.error(error));
@@ -195,6 +195,8 @@ function eosSign(eosName) {
   }else{
     setCookie("account",eosName);
     $(".myName").html(eosName);
+    currencyBalance(eosName)
+    getUserTime(eosName)
   }
   
 
