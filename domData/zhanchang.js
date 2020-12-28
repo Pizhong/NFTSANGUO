@@ -1,4 +1,3 @@
-
 // 战场dom数据操作
 
 
@@ -96,16 +95,16 @@ function showWarReport() {
         html += '<div class="alert-box flex">';
         html += '<div class="war-report-content" >';
         html += '<img src="../image/war-report-close.png" class="close" onclick="$(\'#war-report\').hide()"></img>'
-        // html += '<div class="top">'
-        // html += '<p>这里是城市正中心,一个很宽阔的广场 ，中央有颗大榕树 ，据传已经有千年大树龄 ，是这座城市大历史 见证，树干大底部有个很大大树洞 </p>'
-        // html += '</div>'
+            // html += '<div class="top">'
+            // html += '<p>这里是城市正中心,一个很宽阔的广场 ，中央有颗大榕树 ，据传已经有千年大树龄 ，是这座城市大历史 见证，树干大底部有个很大大树洞 </p>'
+            // html += '</div>'
         html += '<div class="middle">'
         html += '<ul id="battlelog-list">'
-        // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span> 3455</span></li>'
-        // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
-        // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
-        // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
-        // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
+            // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span> 3455</span></li>'
+            // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
+            // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
+            // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
+            // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
         html += '</ul>'
         html += '</div>'
         html += '<div class="btn-group">'
@@ -121,7 +120,7 @@ function showWarReport() {
     } else {
 
     }
-    $("#war-report").show();
+    // $("#war-report").show();
 }
 
 /**
@@ -176,46 +175,46 @@ function estimatedResultShow() {
  * @description:获取battlelog表的数据
  * @param {*}
  * @return {*}
- */ 
+ */
 
 function getBattleLog() {
-  var lower = Number(getCookie("battlelog")) || '';
-  var api = get_random_api();
-  var selfData = {
-    json: true,
-    code: kingContractName,
-    scope: kingContractName,
-    table: 'battlelog',
-    index_position: 1,
-    key_type: "i64",
-    lower_bound: lower,
-    // upwer_bound:lower,
-    limit: 1,
-    reverse: true,
-    show_payer: false,
-  }
-  var api = get_random_api();
-  getLinkData(api, selfData, function(data) {
-    console.log('battlelogData',data);
-    var obj = data.rows;
-    $.each(obj, function(i, n) {
-      var memo = '';
-      if (n.act == "FIRE") {
-        memo = window.zhanchang.getKingName(n.fromkingdom) + n.from + '消耗' + Math.floor(Number(n.point / Math.pow(10, 8))) + '行动点进攻' + window.zhanchang.getKingName(n.tokingdom) + '，造成' + n.value + '伤害';
-      } else if (n.act == "DEFENCE") {
-        memo = window.zhanchang.getKingName(n.fromkingdom) + n.from + '消耗' + Math.floor(Number(n.point / Math.pow(10, 8))) + '行动点增加' + window.zhanchang.getKingName(n.tokingdom) + n.value + '点防御';
-      } else if (n.act == "HEAL") {
-        memo = window.zhanchang.getKingName(n.fromkingdom) + n.from + '消耗' + Math.floor(Number(n.point / Math.pow(10, 8))) + '行动点回复' + window.zhanchang.getKingName(n.tokingdom) + n.value + '点血量';
-      } else if (n.act == "ROB") {
-        memo = window.zhanchang.getKingName(n.tokingdom) + '被' + window.zhanchang.getKingName(n.fromkingdom) + n.from + '打爆，金库被掠夺一空，损失' + Number(n.value / 10000).toFixed(4) + ' eos';
-      }
-      battlelogShow(memo, n.id);
+    var lower = Number(getCookie("battlelog")) || '';
+    var api = get_random_api();
+    var selfData = {
+        json: true,
+        code: kingContractName,
+        scope: kingContractName,
+        table: 'battlelog',
+        index_position: 1,
+        key_type: "i64",
+        lower_bound: lower,
+        // upwer_bound:lower,
+        limit: 1,
+        reverse: true,
+        show_payer: false,
+    }
+    var api = get_random_api();
+    getLinkData(api, selfData, function(data) {
+        // console.log('battlelogData', data);
+        var obj = data.rows;
+        $.each(obj, function(i, n) {
+            var memo = '';
+            if (n.act == "FIRE") {
+                memo = window.zhanchang.getKingName(n.fromkingdom) + n.from + '消耗' + Math.floor(Number(n.point / Math.pow(10, 8))) + '行动点进攻' + window.zhanchang.getKingName(n.tokingdom) + '，造成' + n.value + '伤害';
+            } else if (n.act == "DEFENCE") {
+                memo = window.zhanchang.getKingName(n.fromkingdom) + n.from + '消耗' + Math.floor(Number(n.point / Math.pow(10, 8))) + '行动点增加' + window.zhanchang.getKingName(n.tokingdom) + n.value + '点防御';
+            } else if (n.act == "HEAL") {
+                memo = window.zhanchang.getKingName(n.fromkingdom) + n.from + '消耗' + Math.floor(Number(n.point / Math.pow(10, 8))) + '行动点回复' + window.zhanchang.getKingName(n.tokingdom) + n.value + '点血量';
+            } else if (n.act == "ROB") {
+                memo = window.zhanchang.getKingName(n.tokingdom) + '被' + window.zhanchang.getKingName(n.fromkingdom) + n.from + '打爆，金库被掠夺一空，损失' + Number(n.value / 10000).toFixed(4) + ' eos';
+            }
+            battlelogShow(memo, n.id);
 
-      console.log('memo:',memo);
-    })
+            // console.log('memo:', memo);
+        })
 
-    console.log("战斗记录:", data);
-  });
+        console.log("战斗记录:", data);
+    });
 }
 
 /**
@@ -224,40 +223,40 @@ function getBattleLog() {
  * @return {*}
  */
 function battlelogShow(msg, id) {
-  var log = Number(getCookie("battlelog2")) || 0;
-  var logArray=[]
-  if ($("#battlelog_" + id).length == 0) {
-    var html = '';
-    var html2 = ''
-    if (id != log) {
-      html += '<div id="battlelog_' + id + '" class="msgCon2" style="/* display: none; */">';
-      html += '  <p class="msg">' + msg + '</p>';
-      html += '</div>';
-      $("body").append(html);
-      $("#battlelog_" + id).animate({
-        top: '10%',
-        opacity: '0.52',
-      }, 6800, function() {
-        $("#battlelog_" + id).fadeOut().remove();
-      });
-    
-      if(logArray.length>20){
-        logArray.shift()
-      }
-      else{
-        logArray.push(msg)
-      }
-      console.log(logArray,'arr');
-      for(let i=logArray.length-1;i>=0;i--){
-        html2 += '<li>'+logArray[i]+'</li>'
-        $("#battlelog-list").append(html2)
-      }
-      // setCookie("battlelog",log+1);
-      setCookie("battlelog2", id);
-      setCookie("battlelog", '');
-    }
+    var log = Number(getCookie("battlelog2")) || 0;
+    var logArray = zhanchang.logArray;
+    if ($("#battlelog_" + id).length == 0) {
+        var html = '';
+        var html2 = ''
+        if (id != log) {
+            html += '<div id="battlelog_' + id + '" class="msgCon2" style="/* display: none; */">';
+            html += '  <p class="msg">' + msg + '</p>';
+            html += '</div>';
+            $("body").append(html);
+            $("#battlelog_" + id).animate({
+                top: '10%',
+                opacity: '0.52',
+            }, 6800, function() {
+                $("#battlelog_" + id).fadeOut().remove();
+            });
 
-  }
+            if (logArray.length > 20) {
+                logArray.pop()
+            } else {
+                logArray.unshift(msg)
+            }
+            console.log(logArray, "arrrrr");
+            // console.log($("#battlelog-list"), 'arr');
+            for (let i = 0; i < logArray.length; i++) {
+                html2 = '<li>' + logArray[i] + '</li>' + html2;
+            }
+            $("#battlelog-list").html(html2);
+            // setCookie("battlelog",log+1);
+            setCookie("battlelog2", id);
+            setCookie("battlelog", '');
+        }
+
+    }
 }
 
 

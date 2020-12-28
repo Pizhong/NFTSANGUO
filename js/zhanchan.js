@@ -60,6 +60,7 @@ var userActionType = '';
 var userActionsOnKing = 1;
 var globalCountry = '';
 var battlelogTimer = ''; //battlelog定时器
+var logArray = []; //列表数组
 // 数字格式化
 function numberFormat(num) {
     if (num >= 100000000) {
@@ -422,9 +423,7 @@ function getUserOnKingAct(num) {
     return tag;
 }
 
-battlelogTimer = setInterval(function() {
-    domData.getBattleLog();
-}, 3000)
+
 
 
 
@@ -458,7 +457,10 @@ window.zhanchang = {
     userActionType,
     userActionsOnKing,
     globalCountry,
-    battlelogTimer
-
+    battlelogTimer,
+    logArray
 }
-$(document).ready(updateActionPoint())
+$(document).ready(() => (zhanchang.showWarReport(), updateActionPoint()))
+battlelogTimer = setInterval(function() {
+    domData.getBattleLog();
+}, 3000)
