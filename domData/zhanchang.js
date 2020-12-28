@@ -96,9 +96,9 @@ function showWarReport() {
         html += '<div class="alert-box flex">';
         html += '<div class="war-report-content" >';
         html += '<img src="../image/war-report-close.png" class="close" onclick="$(\'#war-report\').hide()"></img>'
-        html += '<div class="top">'
-        html += '<p>这里是城市正中心,一个很宽阔的广场 ，中央有颗大榕树 ，据传已经有千年大树龄 ，是这座城市大历史 见证，树干大底部有个很大大树洞 </p>'
-        html += '</div>'
+        // html += '<div class="top">'
+        // html += '<p>这里是城市正中心,一个很宽阔的广场 ，中央有颗大榕树 ，据传已经有千年大树龄 ，是这座城市大历史 见证，树干大底部有个很大大树洞 </p>'
+        // html += '</div>'
         html += '<div class="middle">'
         html += '<ul id="battlelog-list">'
         // html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span> 3455</span></li>'
