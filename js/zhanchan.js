@@ -1,4 +1,4 @@
-import dom from "../domData/zhanchang.js";
+import domData from "../domData/zhanchang.js";
 
 
 var actionPoint = '' //行动点
@@ -91,93 +91,16 @@ function receiveActionPonit(event, num) {
     mining(globalNum)
 }
 
-function showWarReport() {
-    if ($('#war-report').length == 0) {
-
-        var html = '';
-
-        html += '<div class="alert-publicly" id="war-report" style="display: none;">';
-        html += '<div class="alert-box flex">';
-        html += '<div class="war-report-content" >';
-        html += '<img src="../image/war-report-close.png" class="close" onclick="$(\'#war-report\').hide()"></img>'
-        html += '<div class="top">'
-        html += '<p>这里是城市正中心,一个很宽阔的广场 ，中央有颗大榕树 ，据传已经有千年大树龄 ，是这座城市大历史 见证，树干大底部有个很大大树洞 </p>'
-        html += '</div>'
-        html += '<div class="middle">'
-        html += '<ul>'
-        html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span> 3455</span></li>'
-        html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
-        html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
-        html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
-        html += '<li>安知水:百花秘术 > 阿贝尔.布鲁斯帝恩 ：<span>HP:5463/ </span><span>3455</span></li>'
-        html += '</ul>'
-        html += '</div>'
-        html += '<div class="btn-group">'
-        html += '<img src="../image/war-report-back.png">'
-        html += '<img src="../image/war-report-next.png">'
-        html += '</div>'
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
 
 
-        $('body').append(html);
-    } else {
-
-    }
-    $("#war-report").show();
-}
-
-function showActionMessage() {
-    getMyknightMsg(globalCountry)
-    if ($('#action-message').length == 0) {
-
-        var html = '';
-
-        html += '<div class="alert-publicly" id="action-message" style="display: none;">';
-        html += '<div class="alert-box flex">';
-        html += '<div class="action-message-content" >';
-        html += '<img src="../image/war-report-close.png" class="close" onclick="$(\'#action-message\').hide(),$(\'#battle-target\').hide()"></img>'
-        html += '<div class="action-message-box1">';
-        html += '<p>行动信息</p>'
-        html += '<div class="action-message-icon-box">'
-        html += '<img src="../image/gongji.png" onclick="selectAction(\'fire\')" style="cursor:pointer;">'
-        html += '<img src="../image/fanyu.png" onclick="selectAction(\'defence\')" style="cursor:pointer;">'
-        html += '<img src="../image/jiaxue.png" onclick="selectAction(\'heal\')" style="cursor:pointer;">'
-        html += '<img src="../image/qianqi.png" onclick="selectAction(\'captureflag\')" style="cursor:pointer;">'
-        html += '</div>'
-        html += '</div>';
-        html += '<div class="action-message-box2">';
-        html += '<p>目标势力</p>'
-        html += '<div class="action-message-icon-box">'
-        html += '<img src="../image/action-message-icon-wei .png" onclick="selectCountry(1)" style="cursor:pointer;">'
-        html += '<img src="../image/action-message-icon-shu .png" onclick="selectCountry(2)" style="cursor:pointer;">'
-        html += '<img src="../image/action-message-icon-wu .png" onclick="selectCountry(3)" style="cursor:pointer;">'
-        html += '</div>'
-        html += '</div>';
-        html += '<div class="action-message-box3">'
-        html += '<p>现在可以使用行动点 : <span id="action-get"></span>，总算力 : <span id="action-totalPower"></span>，您准备使用：</p>'
-        html += '<form>'
-        html += '<input type="text" placeholder="输入行动点数" id="userUsePoint" oninput="estimatedResultShow()">'
-        html += '</form>'
-        html += '<p>预估效果：<span id="estimatedResultTag"</span> </p>'
-        html += '</div>'
-        html += '<img src="../image/action-message-sure-btn.png" class="sure-btn" onclick="userActionOK()">'
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-
-
-        $('body').append(html);
-    } else {
-
-    }
-
-    $('#action-get').html(Number(myknightMsg[1].freeact) / 100000000)
-    $('#action-totalPower').html(myknightMsg[1].power)
+// 显示战斗目标信息
+async function showActionMessage() {
+    domData.showActionMessage();
+    await getMyknightMsg(globalCountry);
+    $('#action-get').html(Number(myknightMsg[globalCountry].freeact) / 100000000)
+    $('#action-totalPower').html(myknightMsg[globalCountry].power)
 
     $("#action-message").show();
-
 }
 
 //返回首页
@@ -308,7 +231,7 @@ function updateActionPoint() {
 $(document).ready(updateActionPoint())
 
 // 获取行动点数据
-function getMyknightMsg(num) {
+async function getMyknightMsg(num) {
     globalNum = num
 
     var api = get_random_api();
@@ -324,51 +247,44 @@ function getMyknightMsg(num) {
         reverse: false,
         show_payer: false,
     }
-    $.post(api + "/v1/chain/get_table_rows", JSON.stringify(selfData),
-        function(data, status) {
-            console.log(data, 'getMykni')
-            for (const x in data["rows"]) {
-                if (data["rows"][x].acc == getCookie("account")) {
-                    myknightMsg[num] = data["rows"][x];
-                    var balance = '';
-                    var times = 0;
-                    var myMiningAct;
-                    var proportion;
-                    $.each(objMsg, function(i, n) {
-                        if (n.id == num) {
-                            console.log(n, 'n');
-                            balance = (n.totalACT - n.supplyACT) / n.period;
-                            proportion = myknightMsg[num].power / n.totalpower;
-                        }
-                    })
+    await $.post(api + "/v1/chain/get_table_rows", JSON.stringify(selfData)).then(function(data, status) {
+        for (const x in data["rows"]) {
 
-                    // var nowTime=new Date().getTime()
-                    // var lastdriptime= new Date(myknightMsg[num]["lastdriptime"]).getTime()
-                    // console.log(nowTime,'nowTime');
-                    // var ctime=nowTime-lastdriptime
-                    // var cbalance=((objMsg[num-1].totalACT)-(objMsg[num-1].supplyACT))/objMsg[num-1].period
-                    // var cpow=(myknightMsg[num]["power"])/(objMsg[num-1].totalpower)
-                    // var callableActionPoints=ctime * cbalance * cpow
-                    // console.log(callableActionPoints,'call');
-                    console.log(objMsg[0].period);
-                    if (getUTCTime(objMsg[0].start) > objMsg[0].period) {
-                        times = objMsg[0].period - (getUTCTime(objMsg[0].start) - getUserUTC(myknightMsg[num].lastdriptime))
-
-                    } else if (myknightMsg[num].lastdriptime) {
-                        times = getUserUTC(myknightMsg[num].lastdriptime);
+            if (data["rows"][x].acc == getCookie("account")) {
+                myknightMsg[num] = data["rows"][x];
+                console.log(myknightMsg, 'getMykni')
+                var balance = '';
+                var times = 0;
+                var myMiningAct;
+                var proportion;
+                $.each(objMsg, function(i, n) {
+                    if (n.id == num) {
+                        console.log(n, 'n');
+                        balance = (n.totalACT - n.supplyACT) / n.period;
+                        proportion = myknightMsg[num].power / n.totalpower;
                     }
+                })
+                console.log(objMsg[0].period);
+                if (getUTCTime(objMsg[0].start) > objMsg[0].period) {
+                    times = objMsg[0].period - (getUTCTime(objMsg[0].start) - getUserUTC(myknightMsg[num].lastdriptime))
 
-                    myMiningAct = balance * times * proportion;
-                    console.log(times, 'times');
-                    console.log(balance, 'balance');
-                    console.log(myMiningAct, 'act');
-                    var MiningAct = ''
-                    MiningAct = new CountUp("callable-action-points", 0, 0.00000000, 8, 3, options)
-                        // $('#callable-action-points').html(Number(myMiningAct))
-                    MiningAct.update(Number(myMiningAct))
+                } else if (myknightMsg[num].lastdriptime) {
+                    times = getUserUTC(myknightMsg[num].lastdriptime);
                 }
+
+                myMiningAct = balance * times * proportion;
+                console.log(times, 'times');
+                console.log(balance, 'balance');
+                console.log(myMiningAct, 'act');
+                var MiningAct = ''
+                MiningAct = new CountUp("callable-action-points", 0, 0.00000000, 8, 3, options)
+                    // $('#callable-action-points').html(Number(myMiningAct))
+                MiningAct.update(Number(myMiningAct))
             }
-        }, "json");
+
+            return Promise.resolve();
+        }
+    });
 }
 
 //收取行动点
@@ -416,71 +332,32 @@ function mining(num) {
     })
 }
 
+/**
+ * @msg: 选择行动信息
+ * @param {*} type 行动信息类型 string
+ * @return {*}
+ */
 function selectAction(type) {
-    userActionType = type
-
-    console.log(type);
+    userActionType = type;
 }
 
+/**
+ * @msg: 选择国家
+ * @param {*} king number [1-3]
+ * @return {*}
+ */
 function selectCountry(king) {
     userActionKing = king
     userActionsOnKing = king;
-    getMyknightMsg(king)
-    console.log(king);
+    getMyknightMsg(king);
 }
 
 
-
-
-//战斗目标
 function estimatedResultShow() {
-
-    var num = $("#userUsePoint").val();
-    var html = '';
-    if (num > 0) {
-        var usePoint = getUserOnKingAct(userActionKing) / 100000000;
-        console.log(usePoint, 'usepoint');
-        var poingConstant = Math.pow(0.5, Math.floor(usePoint / 5000));
-
-        console.log(poingConstant, 'poingConstant1');
-
-        if (userActionType == "fire") {
-            console.log(userActionType);
-            // var tag = Number(myknightMsg[userActionKing].power * num * poingConstant * 3) - kingMsg[userActionsOnKing-1].def;
-            var tag = Number(myknightMsg[userActionKing].power * num * poingConstant * 3);
-            console.log(myknightMsg[userActionKing].power, 'myknightMsg[userActionKing].power');
-            console.log(num, 'num');
-            console.log(poingConstant, 'poingConstant');
-            if (tag < 0) {
-                tag = 0;
-            }
-            html += '  <span>预计能给 ' + getKingName(userActionsOnKing) + ' 造成 ' + tag + ' 伤害 </span>';
-            // html += '  <div>你确定花费 ' + num + ' 行动点，攻击 ' + getKingName(userActionsOnKing) + ' 吗？</div>';
-        } else if (userActionType == "defence") {
-            var tag = Number(myknightMsg[userActionKing].power * num * poingConstant / 2).toFixed(0);
-            html += '  <span>预计能给 ' + getKingName(userActionsOnKing) + ' 加 ' + tag + ' 防御 </span>';
-            // html += '  <div>你确定花费' + num + '行动点，给' + getKingName(userActionsOnKing) + '加防御？</div>';
-        } else if (userActionType == "heal") {
-            var increaseBlood = objMsg[userActionsOnKing - 1].totalHP - objMsg[userActionsOnKing - 1].hp;
-            var tag = myknightMsg[userActionKing].power * num * poingConstant;
-            if (tag > increaseBlood) {
-                tag = increaseBlood;
-            }
-            html += '  <span>预计能给 ' + getKingName(userActionsOnKing) + ' 加 ' + tag + ' 血量 </span>';
-            // html += '  <div>你确定花费' + num + '行动点，给' + getKingName(userActionsOnKing) + '加血？</div>';
-        } else {
-            var tag = Number(myknightMsg[userActionKing].power * num * poingConstant * 3);
-            if (tag < 0) {
-                tag = 0;
-            }
-            html += '  <span>预计能给 ' + getKingName(userActionsOnKing) + ' 造成 ' + tag + ' 伤害 </span>';
-        }
-
-        $("#estimatedResultTag").html(html);
-    } else {
-        $("#estimatedResultTag").html('');
-    }
+    domData.estimatedResultShow();
 }
+
+
 
 function userActionOK() {
     if (userActionsOnKing == '') {
@@ -557,18 +434,11 @@ function getKingName(num) {
 
 function getUserOnKingAct(num) {
     var tag = '--';
-    // $.each(myknightMsg,function(i,n){
-    //   if(num == (i+1) ){
-    //     tag = n.totalact;
-    //   }
-    // })
     if (myknightMsg) {
         if (myknightMsg[num]) {
             tag = myknightMsg[num].freeact;
         }
     }
-
-    // console.log(tag,num,)
     return tag;
 }
 
@@ -577,8 +447,7 @@ window.zhanchang = {
     getActionPotint,
     closeActionPointMsg,
     receiveActionPonit,
-    showWarReport,
-    showActionMessage,
+    showWarReport: domData.showWarReport,
     gobackIndex,
     estimatedResultShow,
     selectAction,
@@ -586,15 +455,19 @@ window.zhanchang = {
     userActionOK,
     numberFormat,
     showBattleTarget,
+    showActionMessage,
+    getMyknightMsg,
+    getUserOnKingAct,
+    getKingName,
     // 变量
-    // actionPoint,
-    // sanguoMsg,
-    // objMsg,
-    // options,
-    // myknightMsg,
-    // globalNum,
-    // userActionKing,
-    // userActionType,
-    // userActionsOnKing,
-    // globalCountry,
+    actionPoint,
+    sanguoMsg,
+    objMsg,
+    options,
+    myknightMsg,
+    globalNum,
+    userActionKing,
+    userActionType,
+    userActionsOnKing,
+    globalCountry,
 }
