@@ -210,26 +210,26 @@ function updateActionPoint() {
         if (zhanchang.objMsg == '') {
             return
         }
-        // setTimeout(() => {
-        //     document.getElementById("totalACT1").innerHTML = Math.round(Number(document.getElementById("actionPoint1").innerHTML))
-        //     document.getElementById("totalACT2").innerHTML = Math.round(Number(document.getElementById("actionPoint3").innerHTML))
-        //     document.getElementById("totalACT3").innerHTML = document.getElementById("actionPoint2").innerHTML
-        //         //血量格式化
-        //     document.getElementById("totalHp1").innerHTML = numberFormat(document.getElementById("totalHp1").innerHTML)
-        //     document.getElementById("totalHp2").innerHTML = numberFormat(document.getElementById("totalHp2").innerHTML)
-        //     document.getElementById("totalHp3").innerHTML = numberFormat(document.getElementById("totalHp3").innerHTML)
-        //         //防御格式化
-        //     document.getElementById("def1").innerHTML = numberFormat(document.getElementById("def1").innerHTML)
-        //     document.getElementById("def2").innerHTML = numberFormat(document.getElementById("def2").innerHTML)
-        //     document.getElementById("def3").innerHTML = numberFormat(document.getElementById("def3").innerHTML)
-        // }, 3100)
+        setTimeout(() => {
+            document.getElementById("totalACT1").innerHTML = Math.round(Number(document.getElementById("actionPoint1").innerHTML))
+            document.getElementById("totalACT2").innerHTML = Math.round(Number(document.getElementById("actionPoint3").innerHTML))
+            document.getElementById("totalACT3").innerHTML = document.getElementById("actionPoint2").innerHTML
+                //血量格式化
+            document.getElementById("totalHp1").innerHTML = numberFormat(document.getElementById("totalHp1").innerHTML)
+            document.getElementById("totalHp2").innerHTML = numberFormat(document.getElementById("totalHp2").innerHTML)
+            document.getElementById("totalHp3").innerHTML = numberFormat(document.getElementById("totalHp3").innerHTML)
+                //防御格式化
+            document.getElementById("def1").innerHTML = numberFormat(document.getElementById("def1").innerHTML)
+            document.getElementById("def2").innerHTML = numberFormat(document.getElementById("def2").innerHTML)
+            document.getElementById("def3").innerHTML = numberFormat(document.getElementById("def3").innerHTML)
+        }, 3100)
     })
 }
 
 
 
 
-$(document).ready(zhanchang.updateActionPoint())
+$(document).ready(updateActionPoint())
 
 // 获取行动点数据
 async function getMyknightMsg(num) {
