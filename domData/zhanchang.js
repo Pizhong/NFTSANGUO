@@ -240,8 +240,18 @@ function battlelogShow(msg, id) {
       }, 6800, function() {
         $("#battlelog_" + id).fadeOut().remove();
       });
-      html2 += '<li>'+msg+'</li>'
-      $("#battlelog-list").append(html2)
+    
+      if(logArray.length>20){
+        logArray.shift()
+      }
+      else{
+        logArray.push(msg)
+      }
+      console.log(logArray,'arr');
+      for(let i=logArray.length-1;i>=0;i--){
+        html2 += '<li>'+logArray[i]+'</li>'
+        $("#battlelog-list").append(html2)
+      }
       // setCookie("battlelog",log+1);
       setCookie("battlelog2", id);
       setCookie("battlelog", '');
