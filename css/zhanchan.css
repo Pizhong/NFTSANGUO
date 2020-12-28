@@ -181,6 +181,9 @@ header {
     margin-left: 26px;
     text-align: center;
     margin-bottom: 80px;
+    position: relative;
+    top: -33px;
+    right: -14px;
 }
 
 .box1-p2 {
@@ -225,6 +228,9 @@ header {
     margin-left: 26px;
     text-align: center;
     margin-bottom: 80px;
+    position: relative;
+    top: -36px;
+    right: -14px;
 }
 
 .box2-p2 {
@@ -275,7 +281,7 @@ header {
     width: 372px;
     position: relative;
     margin-left: 157px;
-    margin-top: 10px;
+    margin-top: 39px;
     cursor: pointer;
 }
 
@@ -292,6 +298,9 @@ header {
     background: url(../image/zhanchan-box4-1-bottom1.png) no-repeat;
     margin-left: 35px;
     margin-bottom: 80px;
+    position: relative;
+    top: -29px;
+    right: -14px;
 }
 
 .box4-1-p2 {
@@ -378,7 +387,7 @@ header {
 
 .blod-box1 {
     position: absolute;
-    top: 24px;
+    top: -11px;
     left: 48px;
     background: url(../image/blod-bottom.png) no-repeat;
     background-size: cover;
@@ -402,13 +411,12 @@ header {
 
 .blod-box2 {
     position: absolute;
-    top: 23px;
+    top: -12px;
     left: 302px;
     background: url(../image/blod-bottom.png) no-repeat;
     background-size: cover;
     padding: 10px 10px 0px;
     width: 150px;
-
 }
 
 .blod-box2 img {
@@ -433,7 +441,6 @@ header {
     background-size: cover;
     padding: 10px 10px 0px;
     width: 150px;
-
 }
 
 .blod-box3 img {
@@ -457,8 +464,8 @@ header {
 .blod-box2 .btn-1,
 .blod-box1 .btn-1 {
     position: relative;
-    width: 44px;
-    height: 27px;
+    width: 59px;
+    height: 28px;
     top: 0;
     cursor: pointer;
 }
@@ -539,9 +546,10 @@ header {
     top: 70px;
     left: 135px;
 }
-.all-icon-right-top li{
-  float: left;
-  margin-right: 10px;
+
+.all-icon-right-top li {
+    float: left;
+    margin-right: 10px;
 }
 
 .all-icon-right-bottom {
