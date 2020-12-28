@@ -131,40 +131,36 @@ function estimatedResultShow() {
     var num = $("#userUsePoint").val();
     var html = '';
     if (num > 0) {
-        var usePoint = zhanchang.getUserOnKingAct(userActionKing) / 100000000;
-        console.log(usePoint, 'usepoint');
+        var usePoint = zhanchang.getUserOnKingAct(zhanchang.userActionKing) / 100000000;
+        console.log(zhanchang.userActionType, 'usepoint');
         var poingConstant = Math.pow(0.5, Math.floor(usePoint / 5000));
-
-        console.log(poingConstant, 'poingConstant1');
-        console.log(userActionType, 66666666);
-        console.log(myknightMsg, 7777777);
-        console.log(userActionType, 7777777);
-
-        if (userActionType == "fire") {
-            var tag = Number(myknightMsg[userActionKing].power * num * poingConstant * 3);
-            console.log(myknightMsg[userActionKing].power, 'myknightMsg[userActionKing].power');
-            console.log(num, 'num');
-            console.log(poingConstant, 'poingConstant');
+        // console.log(zhanchang.myknightMsg, zhanchang.userActionKing, "999999999");
+        if (!zhanchang.myknightMsg[zhanchang.userActionKing]) return
+        if (zhanchang.userActionType == "fire") {
+            var tag = Number(zhanchang.myknightMsg[zhanchang.userActionKing].power * num * poingConstant * 3);
+            // console.log(zhanchang.myknightMsg[userActionKing].power, 'myknightMsg[userActionKing].power');
+            // console.log(num, 'num');
+            // console.log(poingConstant, 'poingConstant');
             if (tag < 0) {
                 tag = 0;
             }
-            html += '  <span>预计能给 ' + zhanchang.getKingName(userActionsOnKing) + ' 造成 ' + tag + ' 伤害 </span>';
-        } else if (userActionType == "defence") {
-            var tag = Number(myknightMsg[userActionKing].power * num * poingConstant / 2).toFixed(0);
-            html += '  <span>预计能给 ' + zhanchang.getKingName(userActionsOnKing) + ' 加 ' + tag + ' 防御 </span>';
-        } else if (userActionType == "heal") {
-            var increaseBlood = objMsg[userActionsOnKing - 1].totalHP - objMsg[userActionsOnKing - 1].hp;
-            var tag = myknightMsg[userActionKing].power * num * poingConstant;
+            html += '  <span>预计能给 ' + zhanchang.getKingName(zhanchang.userActionsOnKing) + ' 造成 ' + tag + ' 伤害 </span>';
+        } else if (zhanchang.userActionType == "defence") {
+            var tag = Number(zhanchang.myknightMsg[zhanchang.userActionKing].power * num * poingConstant / 2).toFixed(0);
+            html += '  <span>预计能给 ' + zhanchang.getKingName(zhanchang.userActionsOnKing) + ' 加 ' + tag + ' 防御 </span>';
+        } else if (zhanchang.userActionType == "heal") {
+            var increaseBlood = zhanchang.objMsg[zhanchang.userActionsOnKing - 1].totalHP - zhanchang.objMsg[zhanchang.userActionsOnKing - 1].hp;
+            var tag = zhanchang.myknightMsg[zhanchang.userActionKing].power * num * poingConstant;
             if (tag > increaseBlood) {
                 tag = increaseBlood;
             }
-            html += '  <span>预计能给 ' + zhanchang.getKingName(userActionsOnKing) + ' 加 ' + tag + ' 血量 </span>';
+            html += '  <span>预计能给 ' + zhanchang.getKingName(zhanchang.userActionsOnKing) + ' 加 ' + tag + ' 血量 </span>';
         } else {
-            var tag = Number(myknightMsg[userActionKing].power * num * poingConstant * 3);
+            var tag = Number(zhanchang.myknightMsg[zhanchang.userActionKing].power * num * poingConstant * 3);
             if (tag < 0) {
                 tag = 0;
             }
-            html += '  <span>预计能给 ' + zhanchang.getKingName(userActionsOnKing) + ' 造成 ' + tag + ' 伤害 </span>';
+            html += '  <span>预计能给 ' + zhanchang.getKingName(zhanchang.userActionsOnKing) + ' 造成 ' + tag + ' 伤害 </span>';
         }
 
         $("#estimatedResultTag").html(html);

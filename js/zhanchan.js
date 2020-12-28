@@ -1,4 +1,5 @@
 import domData from "../domData/zhanchang.js";
+import zhanchangApi from "../requestApi/zhanchangApi.js";
 
 
 var actionPoint = '' //行动点
@@ -88,7 +89,7 @@ function closeActionPointMsg() {
 function receiveActionPonit(event, num) {
     $(event.target).hide();
     $("#box" + num + "-btn").show();
-    mining(globalNum)
+    mining(zhanchang.globalNum)
 }
 
 
@@ -96,9 +97,9 @@ function receiveActionPonit(event, num) {
 // 显示战斗目标信息
 async function showActionMessage() {
     domData.showActionMessage();
-    await getMyknightMsg(globalCountry);
-    $('#action-get').html(Number(myknightMsg[globalCountry].freeact) / 100000000)
-    $('#action-totalPower').html(myknightMsg[globalCountry].power)
+    await getMyknightMsg(zhanchang.globalCountry);
+    $('#action-get').html(Number(zhanchang.myknightMsg[zhanchang.globalCountry].freeact) / 100000000)
+    $('#action-totalPower').html(zhanchang.myknightMsg[zhanchang.globalCountry].power)
 
     $("#action-message").show();
 }
@@ -110,8 +111,8 @@ function gobackIndex() {
 
 //显示战斗目标图标
 function showBattleTarget(num) {
-    $("#battle-target").show()
-    globalCountry = num
+    $("#battle-target").show();
+    zhanchang.globalCountry = num;
 }
 
 //行动点更新
@@ -128,8 +129,8 @@ function updateActionPoint() {
         limit: 10,
         reverse: false,
         show_payer: false,
-    }
-
+    };
+    //commonjs方法
     getLinkData(api, selfData, function(data) {
         for (const x in data.rows) {
             objMsg[x] = data["rows"][x];
@@ -232,7 +233,7 @@ $(document).ready(updateActionPoint())
 
 // 获取行动点数据
 async function getMyknightMsg(num) {
-    globalNum = num
+    zhanchang.globalNum = num
 
     var api = get_random_api();
     var selfData = {
@@ -246,45 +247,8 @@ async function getMyknightMsg(num) {
         limit: 1,
         reverse: false,
         show_payer: false,
-    }
-    await $.post(api + "/v1/chain/get_table_rows", JSON.stringify(selfData)).then(function(data, status) {
-        for (const x in data["rows"]) {
-
-            if (data["rows"][x].acc == getCookie("account")) {
-                myknightMsg[num] = data["rows"][x];
-                console.log(myknightMsg, 'getMykni')
-                var balance = '';
-                var times = 0;
-                var myMiningAct;
-                var proportion;
-                $.each(objMsg, function(i, n) {
-                    if (n.id == num) {
-                        console.log(n, 'n');
-                        balance = (n.totalACT - n.supplyACT) / n.period;
-                        proportion = myknightMsg[num].power / n.totalpower;
-                    }
-                })
-                console.log(objMsg[0].period);
-                if (getUTCTime(objMsg[0].start) > objMsg[0].period) {
-                    times = objMsg[0].period - (getUTCTime(objMsg[0].start) - getUserUTC(myknightMsg[num].lastdriptime))
-
-                } else if (myknightMsg[num].lastdriptime) {
-                    times = getUserUTC(myknightMsg[num].lastdriptime);
-                }
-
-                myMiningAct = balance * times * proportion;
-                console.log(times, 'times');
-                console.log(balance, 'balance');
-                console.log(myMiningAct, 'act');
-                var MiningAct = ''
-                MiningAct = new CountUp("callable-action-points", 0, 0.00000000, 8, 3, options)
-                    // $('#callable-action-points').html(Number(myMiningAct))
-                MiningAct.update(Number(myMiningAct))
-            }
-
-            return Promise.resolve();
-        }
-    });
+    };
+    await zhanchangApi.getKnightMsg(api, selfData, num);
 }
 
 //收取行动点
@@ -338,7 +302,7 @@ function mining(num) {
  * @return {*}
  */
 function selectAction(type) {
-    userActionType = type;
+    zhanchang.userActionType = userActionType = type;
 }
 
 /**
@@ -346,19 +310,27 @@ function selectAction(type) {
  * @param {*} king number [1-3]
  * @return {*}
  */
-function selectCountry(king) {
-    userActionKing = king
-    userActionsOnKing = king;
-    getMyknightMsg(king);
+async function selectCountry(king) {
+    zhanchang.userActionKing = king
+    zhanchang.userActionsOnKing = king;
+    await getMyknightMsg(king);
 }
 
-
+/**
+ * @msg: 战斗目标预估效果
+ * @param {*}
+ * @return {*}
+ */
 function estimatedResultShow() {
     domData.estimatedResultShow();
 }
 
 
-
+/**
+ * @msg: 确认战斗操作
+ * @param {*}
+ * @return {*}
+ */
 function userActionOK() {
     if (userActionsOnKing == '') {
         showMsg("请选择目标国家");
@@ -444,6 +416,7 @@ function getUserOnKingAct(num) {
 
 // module引入文件不会暴露到全局，需要通过window对象引出
 window.zhanchang = {
+    //方法
     getActionPotint,
     closeActionPointMsg,
     receiveActionPonit,
