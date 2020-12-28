@@ -365,6 +365,10 @@ function storychape(data){
     1:'./image/end.png',
     2:'./image/keep.png'
   }
+  var href={
+    1:'#',
+    2:"'./html/zhanchan.html'"
+  }
   if(data.length>0){
     for(let i =0;i<data.length;i++){
       var startTime=getTime(data[i]["start"])
@@ -391,7 +395,7 @@ function storychape(data){
       html2 +=    '<span class="time-text">'+data[i]["timeass"]+'</span>'
       html2 +=     '</div>'
       html2 +=     '<div class="status">'
-      html2 +=     '<img src="'+status[data[i]["stat"]]+'" alt="">'
+      html2 +=     '<img src="'+status[data[i]["stat"]]+'" alt="" id="status" onclick="window.location.href='+href[data[i]["stat"]]+'">'
       html2 +=     '</div>'
       html2 +=     '<div class="time">'
       html2 +=     ' <p>开始时间：&nbsp;'+startTime+'-'+ endTime +'</p>'
@@ -499,6 +503,7 @@ function goIndex(){
 
 $("#select1").mouseenter(function(){
   $(this).attr("src",'./image/bottom1-hover.png')
+  
 })
 $("#select2").mouseenter(function(){
   $(this).attr("src",'./image/bottom2-hover.png')
@@ -517,6 +522,7 @@ $("#select5").mouseenter(function(){
 
 $("#select1").mouseleave(function(){
   $(this).attr("src",'./image/bottom1.png')
+  $(this).css("margin-top","13px")
 })
 $("#select2").mouseleave(function(){
   $(this).attr("src",'./image/bottom2.png')

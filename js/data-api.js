@@ -15,7 +15,7 @@ function getStorychapeList(fun){
   	}
    $.post(api + "/v1/chain/get_table_rows", JSON.stringify(selfData),
     function(data, status) {
-
+      console.log(status,'status');
       console.log(data,'da');
       storychape(data.rows);
       // fun(data);
