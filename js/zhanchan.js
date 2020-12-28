@@ -387,6 +387,11 @@ function userActionOK() {
     })
 }
 
+/**
+ * @msg: 根据数值返回国家名称
+ * @param {*} num number
+ * @return {*}
+ */
 function getKingName(num) {
     var tag = '魏国';
     switch (String(num)) {
