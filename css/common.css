@@ -530,6 +530,7 @@ span {
     width: 494px;
     text-align: center;
     background: url(../image/action-message-bottom.png) no-repeat;
+    position: relative;
 }
 
 .action-message-box1 {
