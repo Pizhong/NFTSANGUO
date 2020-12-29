@@ -131,7 +131,7 @@ function showBattleTarget(num) {
 }
 
 //行动点更新
-function updateActionPoint() {
+async function updateActionPoint() {
     var api = getRandomApi();
     var selfData = {
         json: true,
@@ -146,8 +146,7 @@ function updateActionPoint() {
         show_payer: false,
     };
     //commonjs方法
-    getLinkData(api, selfData, function(data) {
-        console.log(data, 'actionpoint');
+    await getLinkData(api, selfData, function(data) {
         for (const x in data.rows) {
             zhanchang.objMsg[x] = data["rows"][x];
             zhanchang.objMsg[x].supplyACT = Math.floor(Number(parseFloat(zhanchang.objMsg[x].supplyACT) / Math.pow(10, 8)));
@@ -239,9 +238,9 @@ function updateActionPoint() {
             document.getElementById("def3").innerHTML = numberFormat(document.getElementById("def3").innerHTML)
         }, 3100)
     });
-    getActionPotint(1);
-    getActionPotint(2);
-    getActionPotint(3);
+    await getActionPotint(1);
+    await getActionPotint(2);
+    await getActionPotint(3);
 }
 
 

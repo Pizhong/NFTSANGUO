@@ -53,16 +53,18 @@ function getUserToken(name) {
  * @return {*}
  */
 function getLinkData(api, selfData, fun) {
-    $.post(api + "/v1/chain/get_table_rows", JSON.stringify(selfData),
-        function(data, status) {
-            if (status) {
-                fun(data);
-            } else {
-                console.log("获取不到数据", api, selfData)
-                    // getLinkData(api,selfData,fun);
-            }
-        }, "json"
-    );
+    return new Promise(resolve => {
+        $.post(api + "/v1/chain/get_table_rows", JSON.stringify(selfData),
+            function(data, status) {
+                if (status) {
+                    fun(data);
+                    return resolve();
+                } else {
+                    console.error("获取不到数据", api, selfData);
+                }
+            }, "json"
+        );
+    })
 }
 
 export default {

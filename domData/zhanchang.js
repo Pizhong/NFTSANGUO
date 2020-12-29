@@ -177,7 +177,7 @@ function estimatedResultShow() {
  * @return {*}
  */
 
-function getBattleLog() {
+async function getBattleLog() {
     var lower = Number(getCookie("battlelog")) || '';
     var api = getRandomApi();
     var selfData = {
@@ -194,7 +194,7 @@ function getBattleLog() {
         show_payer: false,
     }
     var api = getRandomApi();
-    getLinkData(api, selfData, function(data) {
+    await getLinkData(api, selfData, function(data) {
         // console.log('battlelogData', data);
         var obj = data.rows;
         $.each(obj, function(i, n) {
