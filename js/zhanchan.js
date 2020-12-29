@@ -61,6 +61,8 @@ var userActionsOnKing = 1;
 var globalCountry = '';
 var battlelogTimer = ''; //battlelog定时器
 var logArray = []; //列表数组
+var treasureMsg=[] //军旗表相关数据
+var treasureTimer=''
 // 数字格式化
 function numberFormat(num) {
     if (num >= 100000000) {
@@ -98,8 +100,8 @@ function receiveActionPonit(event, num) {
 
 // 显示战斗目标信息
 async function showActionMessage() {
-    domData.showActionMessage();
-    await getMyknightMsg(zhanchang.globalCountry);
+    await domData.showActionMessage();
+    // await getMyknightMsg(zhanchang.globalCountry);
     $('#action-get').html(Number(zhanchang.myknightMsg[zhanchang.globalCountry].freeact) / 100000000)
     $('#action-totalPower').html(zhanchang.myknightMsg[zhanchang.globalCountry].power)
 
@@ -113,7 +115,8 @@ function gobackIndex() {
 
 //显示战斗目标图标
 function showBattleTarget(num) {
-    $("#battle-target").show();
+    // $("#battle-target").show();
+    showActionMessage()
     zhanchang.globalCountry = num;
 }
 
@@ -134,6 +137,7 @@ function updateActionPoint() {
     };
     //commonjs方法
     getLinkData(api, selfData, function(data) {
+      console.log(data,'actionpoint');
         for (const x in data.rows) {
             zhanchang.objMsg[x] = data["rows"][x];
             zhanchang.objMsg[x].supplyACT = Math.floor(Number(parseFloat(zhanchang.objMsg[x].supplyACT) / Math.pow(10, 8)));
@@ -255,6 +259,10 @@ async function getMyknightMsg(num) {
     };
     await zhanchangApi.getKnightMsg(api, selfData, num);
 }
+
+
+
+
 
 //收取行动点
 function mining(num) {
@@ -423,8 +431,50 @@ function getUserOnKingAct(num) {
     return tag;
 }
 
+/**
+ * @description:获取军旗表的数据 
+ * @param {*}
+ * @return {*}
+ */
+async function getMyTreasureBox(){
+  var api = get_random_api();
+  var selfData = {
+      json: true,
+      code: kingContractName,
+      scope: kingContractName,
+      table: 'treasurebox',
+      index_position: 1,
+      key_type: "i64",
+      lower_bound: 0,
+      // limit: 9,
+      reverse: false,
+      show_payer: false,
+  };
+  let res=await zhanchangApi.getTreasureBox(api, selfData);
+  // console.log(res,'getmytrea');
+  let nowTime=new Date().getTime()
+  // console.log(nowTime,'现在时间');
+  for(let k in res["rows"]){
+    // console.log(res["rows"][k],'kkkkk');
+    treasureMsg=res["rows"][k]
+    let effectiveTime=(new Date(treasureMsg["start"])).getTime()+treasureMsg["period"]
+    // console.log(effectiveTime,'effectiveTime');
+    if(treasureMsg["kingdomid"]==1 && treasureMsg["HP"]>0 && effectiveTime>0){
+      // console.log('魏国');
+      $(".box1-flag").show()
+    }
+    else if(treasureMsg["kingdomid"]==2 && treasureMsg["HP"]>0 && effectiveTime>0){
+      // console.log("蜀国");
+      $(".box2-flag").show()
 
+    }
+    else if(treasureMsg["kingdomid"]==3 && treasureMsg["HP"]>0 && effectiveTime>0){
+      // console.log("吴国");
+      $(".box4-flag").show()
 
+    }
+  }
+}
 
 
 // module引入文件不会暴露到全局，需要通过window对象引出
@@ -446,6 +496,7 @@ window.zhanchang = {
     getUserOnKingAct,
     getKingName,
     updateActionPoint,
+    getMyTreasureBox,
     // 变量
     actionPoint,
     sanguoMsg,
@@ -458,9 +509,15 @@ window.zhanchang = {
     userActionsOnKing,
     globalCountry,
     battlelogTimer,
-    logArray
+    logArray,
+    treasureTimer
+
 }
 $(document).ready(() => (zhanchang.showWarReport(), updateActionPoint()))
 battlelogTimer = setInterval(function() {
     domData.getBattleLog();
 }, 3000)
+
+treasureTimer=setInterval(()=>{
+  getMyTreasureBox()
+},3000)

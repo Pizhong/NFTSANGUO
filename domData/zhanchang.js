@@ -213,7 +213,7 @@ function getBattleLog() {
             // console.log('memo:', memo);
         })
 
-        console.log("战斗记录:", data);
+        // console.log("战斗记录:", data);
     });
 }
 

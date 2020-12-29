@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-12-25 09:35:50
+ * @LastEditTime: 2020-12-29 12:03:07
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \NFTSANGUO\js\data-api.js
+ */
 
 
 function getStorychapeList(fun){
@@ -60,7 +68,7 @@ function getUserTime(name){
   function(data,status){
     console.log(data,'time');
     var num = String(data[0]).split(" ")[0] || "0.0000";//零的个数取决与代币合约发行的小数精度
-    $(".box3-midd").html(num.substring(0,s.indexOf(".")+7)+" TIME");
+    $(".box3-midd").html(num.substring(0,num.indexOf(".")+5)+" TIME");
   }, "json");
 }
 

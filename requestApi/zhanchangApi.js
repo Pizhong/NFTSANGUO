@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-12-28 17:18:35
+ * @LastEditTime: 2020-12-29 14:52:40
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \NFTSANGUO\requestApi\zhanchangApi.js
+ */
 // 战场请求api
 
 /**
@@ -11,6 +19,7 @@ function getKnightMsg(api, selfData, num) {
     return new Promise(resolve => {
         $.post(api + "/v1/chain/get_table_rows", JSON.stringify(selfData)).then((data) => resolve(data))
     }).then(function(data) {
+      console.log(data,'knig');
         for (const x in data["rows"]) {
 
             if (data["rows"][x].acc == getCookie("account")) {
@@ -36,6 +45,7 @@ function getKnightMsg(api, selfData, num) {
                 }
 
                 myMiningAct = balance * times * proportion;
+                console.log(myMiningAct,'行动点');
                 // console.log(times, 'times');
                 // console.log(balance, 'balance');
                 // console.log(myMiningAct, 'act');
@@ -50,6 +60,23 @@ function getKnightMsg(api, selfData, num) {
     })
 }
 
+/**
+ * @description: 请求treasurebox表的数据
+ * @param {*} api 请求地址
+ * @param {*} selfData 请求发送数据
+ * @return {*} 
+ */
+function getTreasureBox(api,selfData){
+  return new Promise(resolve => {
+    $.post(api + "/v1/chain/get_table_rows", JSON.stringify(selfData)).then((data) => resolve(data))
+      }).then(function(data) {
+          return data
+      },"json")
+  
+}
+
+
 export default {
     getKnightMsg,
+    getTreasureBox
 }
