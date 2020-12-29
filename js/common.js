@@ -13,7 +13,6 @@ window.myMoneyLockWeekTimer = '';
 ScatterJS.plugins(new ScatterEOS());
 
 window.chainId;
-var nftContractName, dexContractName, saleContractName, blindBoxContractName;
 
 
 function getRandomApi() {
@@ -36,13 +35,10 @@ window.isDev = true;
 
 
 $(function() {
-    // getNavPanel();
     connectEOS();
     if (getCookie("account")) {
-
         $(".myName").html(getCookie("account"));
     }
-    // eosLogin();
 })
 
 function connectEOS() {

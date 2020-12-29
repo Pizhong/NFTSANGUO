@@ -82,25 +82,6 @@ window.EOS_CONFIG = {
 }
 
 
-// function connectEOS() {
-//     if (window.ScatterJS) {
-//         ScatterJS.connect(dexContractName, {
-//             network: window.network
-//         }).then(connected => {
-//             console.log("connected", connected)
-//             if (!connected) return false;
-//             // ScatterJS.someMethod();
-//         });
-//         loot.scatter = window.ScatterJS.scatter;
-//         window.ScatterJS = null;
-//         setTimeout(function() {
-//             eosLogin();
-//         }, 1000)
-
-//     }
-
-// }
-
 
 
 function getDateRandom() {
