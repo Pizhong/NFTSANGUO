@@ -1,6 +1,6 @@
 window.getRandomApi2 = getRandomApi2;
 window.getRandomApi = getRandomApi;
-window.connectEOS = connectEOS;
+// window.connectEOS = connectEOS;
 window.getDateRandom = getDateRandom;
 window.eosLogin = eosLogin;
 window.exit = exit;
@@ -82,24 +82,24 @@ window.EOS_CONFIG = {
 }
 
 
-function connectEOS() {
-    if (window.ScatterJS) {
-        ScatterJS.connect(dexContractName, {
-            network: window.network
-        }).then(connected => {
-            console.log("connected", connected)
-            if (!connected) return false;
-            // ScatterJS.someMethod();
-        });
-        loot.scatter = window.ScatterJS.scatter;
-        window.ScatterJS = null;
-        setTimeout(function() {
-            eosLogin();
-        }, 1000)
+// function connectEOS() {
+//     if (window.ScatterJS) {
+//         ScatterJS.connect(dexContractName, {
+//             network: window.network
+//         }).then(connected => {
+//             console.log("connected", connected)
+//             if (!connected) return false;
+//             // ScatterJS.someMethod();
+//         });
+//         loot.scatter = window.ScatterJS.scatter;
+//         window.ScatterJS = null;
+//         setTimeout(function() {
+//             eosLogin();
+//         }, 1000)
 
-    }
+//     }
 
-}
+// }
 
 
 
@@ -111,11 +111,14 @@ function getDateRandom() {
 
 
 function eosLogin() {
-    window.checkScatter(function(user) {
-        window.pubKeySign(user.name);
+    return new Promise(resolve => {
+        window.checkScatter(function(user) {
+            window.pubKeySign(user.name);
 
-        window.currencyBalance(user.name)
-        window.getUserTime(user.name)
+            window.currencyBalance(user.name)
+            window.getUserTime(user.name);
+            resolve();
+        })
     })
 }
 
@@ -196,6 +199,6 @@ function pubKeySign(eosName) {
 }
 
 $(function() {
-    connectEOS();
+    // connectEOS();
 
 })

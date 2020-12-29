@@ -149,12 +149,10 @@ window.selfData = {
 
 
 
-function checkLogin() {
+async function checkLogin() {
     if (!getCookie("account")) {
         showMsg("请登录");
-        setTimeout(function() {
-            eosLogin();
-        }, 520)
+        await eosLogin();
 
         return false
     }
@@ -163,11 +161,11 @@ function checkLogin() {
 
 
 
-$(function() {
+$(async function() {
     console.log("启动了哈.......");
-    connectEOS();
+    await connectEOS();
     console.log("连接钱包成功，eos节点登录.......");
-    eosLogin();
+    await eosLogin();
 })
 
 

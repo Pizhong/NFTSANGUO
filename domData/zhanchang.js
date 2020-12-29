@@ -43,7 +43,7 @@ function showActionMessage() {
         html += '<div class="alert-publicly" id="action-message" style="display: none;">';
         html += '<div class="alert-box flex">';
         html += '<div class="action-message-content" >';
-        html += '<img src="../image/war-report-close.png" class="close" onclick="$(\'#action-message\').hide(),$(\'#battle-target\').hide()"></img>'
+        html += '<img src="../image/war-report-close.png" class="close" onclick="$(\'#action-message, #battle-target\').hide()"></img>'
         html += '<div class="action-message-box1">';
         html += '<p>行动信息</p>'
         html += '<div class="action-message-icon-box">'
@@ -213,7 +213,7 @@ function getBattleLog() {
             // console.log('memo:', memo);
         })
 
-        console.log("战斗记录:", data);
+        // console.log("战斗记录:", data);
     });
 }
 

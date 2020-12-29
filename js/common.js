@@ -47,18 +47,21 @@ $(function() {
 
 function connectEOS() {
     if (window.ScatterJS) {
-        ScatterJS.connect(window.dexContractName, {
-            network
-        }).then(connected => {
-            console.log("connected", connected)
-            if (!connected) return false;
-            // ScatterJS.someMethod();
+        return new Promise(resolve => {
+            ScatterJS.connect(window.dexContractName, {
+                network
+            }).then(connected => {
+                console.log("connected", connected);
+                resolve();
+                if (!connected) return false;
+                // ScatterJS.someMethod();
+            })
+        }).then(res => {
+            loot.scatter = window.ScatterJS.scatter;
+            window.ScatterJS = null;
+            return eosLogin();
         });
-        loot.scatter = window.ScatterJS.scatter;
-        window.ScatterJS = null;
-        setTimeout(function() {
-            eosLogin();
-        }, 1000)
+
 
     }
 
