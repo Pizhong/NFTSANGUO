@@ -1,4 +1,4 @@
-// 战场dom数据操作
+// dom数据操作 ---> zhanchan.js
 
 
 
@@ -179,7 +179,7 @@ function estimatedResultShow() {
 
 function getBattleLog() {
     var lower = Number(getCookie("battlelog")) || '';
-    var api = get_random_api();
+    var api = getRandomApi();
     var selfData = {
         json: true,
         code: kingContractName,
@@ -193,7 +193,7 @@ function getBattleLog() {
         reverse: true,
         show_payer: false,
     }
-    var api = get_random_api();
+    var api = getRandomApi();
     getLinkData(api, selfData, function(data) {
         // console.log('battlelogData', data);
         var obj = data.rows;

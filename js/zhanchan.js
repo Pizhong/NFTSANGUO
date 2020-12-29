@@ -119,7 +119,7 @@ function showBattleTarget(num) {
 
 //行动点更新
 function updateActionPoint() {
-    var api = get_random_api();
+    var api = getRandomApi();
     var selfData = {
         json: true,
         code: kingContractName,
@@ -240,7 +240,7 @@ function updateActionPoint() {
 async function getMyknightMsg(num) {
     zhanchang.globalNum = num;
 
-    var api = get_random_api();
+    var api = getRandomApi();
     var selfData = {
         json: true,
         code: kingContractName,

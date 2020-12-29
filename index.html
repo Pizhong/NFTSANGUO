@@ -132,51 +132,51 @@
               <li><img src="./image/guaji-icon4.png" alt=""><span>11/m</span></li>
             </ul>
           </div> -->
-        <!-- </li> -->
-      </ul>
-    </div>
-    <div class="bottom flex">
-      <ul>
-        <li><img src="./image/bottom1.png" id="select1" style="" onclick="goMyArms()"></li>
-        <li><img src="./image/bottom2.png" id="select2" style="" onclick="goZhanChan()"></li>
-        <li><img src="./image/bottom3.png" id="select3" style="" onclick="goArmory()"></li>
-        <li><img src="./image/bottom4.png" id="select4" style="" onclick="goSmithy()"></li>
-        <li><img src="./image/bottom5.png" id="select5" style="" onclick="goAlliance()"></li>
-        <li><img src="./image/bottom6.png"  style="" onclick="goIndex()"></li>
-      </ul>
-    </div>
-    <div class="alert" id="descriptionMsgBox" style="display: none;">
-        <div class="flex" style="height:100%;">
-            <div class="content" style="padding-bottom: 20px;">
-                <div class="header flex">
-                    <span style="flex:1;"></span>
-                    <span class="desTitle" style="flex:1.3;">说明</span>
+                <!-- </li> -->
+            </ul>
+        </div>
+        <div class="bottom flex">
+            <ul>
+                <li><img src="./image/bottom1.png" id="select1" style="" onclick="goMyArms()"></li>
+                <li><img src="./image/bottom2.png" id="select2" style="" onclick="goZhanChan()"></li>
+                <li><img src="./image/bottom3.png" id="select3" style="" onclick="goArmory()"></li>
+                <li><img src="./image/bottom4.png" id="select4" style="" onclick="goSmithy()"></li>
+                <li><img src="./image/bottom5.png" id="select5" style="" onclick="goAlliance()"></li>
+                <li><img src="./image/bottom6.png" style="" onclick="goIndex()"></li>
+            </ul>
+        </div>
+        <div class="alert" id="descriptionMsgBox" style="display: none;">
+            <div class="flex" style="height:100%;">
+                <div class="content" style="padding-bottom: 20px;">
+                    <div class="header flex">
+                        <span style="flex:1;"></span>
+                        <span class="desTitle" style="flex:1.3;">说明</span>
 
-                    <span onclick="$('#descriptionMsgBox').hide()">
+                        <span onclick="$('#descriptionMsgBox').hide()">
             <img src="image/closes1.png" alt="" class="closeSvg">
           </span>
-                </div>
-                <div class="stackCountryBox">
-                    <div style="height: 526px;line-height:25px;overflow-y: auto;background:url(./image/bglist.png) no-repeat;padding-left: 10px;">
                     </div>
-                </div>
-                <div class="flex">
-                    <div class="actionBtn" onclick="$('#descriptionMsgBox').hide()"></div>
+                    <div class="stackCountryBox">
+                        <div style="height: 526px;line-height:25px;overflow-y: auto;background:url(./image/bglist.png) no-repeat;padding-left: 10px;">
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="actionBtn" onclick="$('#descriptionMsgBox').hide()"></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 </body>
 
-<script type="text/javascript" src="./lib/jquery-2.1.0.min.js"></script>
-<script type="text/javascript" src="./js/countUp.js"></script>
-<script type="text/javascript" src="./lib/eos16.0.0.min.js"></script>
-<script type="text/javascript" src="./lib/scatterjs-core.min.js"></script>
-<script type="text/javascript" src="./lib/scatterjs-plugin-eosjs.min.js"></script>
-<script type="text/javascript" src="./js/common.js?v=2020120117"></script>
-<script type="text/javascript" src="./js/eos-base.js?v=2020120117"></script>
-<script type="text/javascript" src="./js/data-api.js?v=2020120117"></script>
-<script type="text/javascript" src="./js/index.js?v=2020120118"></script>
+<script type="text/javascript" src="./lib/jquery-2.1.0.min.js" defer></script>
+<script type="text/javascript" src="./js/countUp.js" defer></script>
+<script type="text/javascript" src="./lib/eos16.0.0.min.js" defer></script>
+<script type="text/javascript" src="./lib/scatterjs-core.min.js" defer></script>
+<script type="text/javascript" src="./lib/scatterjs-plugin-eosjs.min.js" defer></script>
+<script type="text/javascript" src="./requestApi/data-api.js" defer></script>
+<script type="module" src="./js/common.js?v=2020120117"></script>
+<script type="text/javascript" src="./js/eos-base.js?v=2020120117" defer></script>
+<script type="module" src="./js/index.js?v=2020120118"></script>
 
 </html>
