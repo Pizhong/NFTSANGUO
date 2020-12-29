@@ -161,12 +161,12 @@ async function checkLogin() {
 
 
 
-$(async function() {
-    console.log("启动了哈.......");
-    await connectEOS();
-    console.log("连接钱包成功，eos节点登录.......");
-    await eosLogin();
-})
+// $(async function() {
+//     console.log("启动了哈.......");
+//     await connectEOS();
+//     console.log("连接钱包成功，eos节点登录.......");
+//     await eosLogin();
+// })
 
 
 
