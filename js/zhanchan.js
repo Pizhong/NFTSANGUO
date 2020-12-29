@@ -138,7 +138,6 @@ function updateActionPoint() {
             zhanchang.objMsg[x] = data["rows"][x];
             zhanchang.objMsg[x].supplyACT = Math.floor(Number(parseFloat(zhanchang.objMsg[x].supplyACT) / Math.pow(10, 8)));
             zhanchang.objMsg[x].totalACT = Math.floor(Number(parseFloat(zhanchang.objMsg[x].totalACT) / Math.pow(10, 8)));
-            console.log(numberFormat(objMsg[x].totalHP));
             $.each(zhanchang.sanguoMsg, function(i, n) {
                 console.log('each', i, n)
                 if (Number(x) == Number(n.id - 1)) {
@@ -264,7 +263,7 @@ function mining(num) {
 
     checkScatter(function(user) {
         var authorization;
-        const eos = loot.scatter.eos(network, Eos);
+        const eos = loot.scatter.eos(window.network, Eos);
         const account = user.name;
         authorization = [{
             actor: account,
@@ -350,7 +349,7 @@ function userActionOK() {
     var fromUser = getCookie("account");
     checkScatter(function(user) {
         var authorization;
-        const eos = loot.scatter.eos(network, Eos);
+        const eos = loot.scatter.eos(window.network, Eos);
         const account = user.name;
         authorization = [{
             actor: account,

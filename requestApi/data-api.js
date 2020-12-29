@@ -4,7 +4,6 @@
  * @return {*}
  */
 function getStorychapeList(fun) {
-    console.log(window);
     var api = window.getRandomApi();
     var selfData = {
         json: true, // Get the response as json
