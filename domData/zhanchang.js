@@ -78,7 +78,7 @@ function showActionMessage() {
     } else {
 
     }
-    
+
 }
 
 /**
@@ -245,8 +245,6 @@ function battlelogShow(msg, id) {
             } else {
                 logArray.unshift(msg)
             }
-            console.log(logArray, "arrrrr");
-            // console.log($("#battlelog-list"), 'arr');
             for (let i = 0; i < logArray.length; i++) {
                 html2 = '<li>' + logArray[i] + '</li>' + html2;
             }
@@ -260,80 +258,80 @@ function battlelogShow(msg, id) {
 }
 
 /**
- * @description:盟约 
+ * @description:盟约
  * @param {*}
  * @return {*}
  */
-function showCovenant(){
-  if($('#covenant').length==0){
-    var html = '';
+function showCovenant() {
+    if ($('#covenant').length == 0) {
+        var html = '';
 
         html += '<div class="alert-covenant" id="covenant" style="display:none;">';
-        html +=  '<div class="alert-box flex">'
-        html +=  '<div class="covenant-content">'
-        // 标题
-        html +=  '<div class="title">'
-        html +=  '<span class="title-text">盟约</span>'
-        html +=   '<img src="../image/closes1.png" class="close" onclick="$(\'#covenant\').hide()">'
-        html +=  '</div>'
-        html +=  '<div class="main flex" style="flex-wrap:wrap;">'
-        //板块--魏
-        html +=  '<div class="main-wei">'
-        html +=   '<img src="../image/weiBG.png">'
-        html +=   '<div class="wu">'
-        html +=    '<span>吴</span>'
-        html +=    '<img src="../image/progress-51.png" style="width:210px;margin:10px 10px 0 8px;">'
-        html +=    '<span style="margin-right:21px;">51%</span>'
-        html +=    '<img src="../image/voteBtn.png">'
-        html +=   '</div>'
-        html +=   '<div class="shu">'
-        html +=    '<span>蜀</span>'
-        html +=    '<img src="../image/progress-78.png" style="width:210px;margin:10px 10px 0 8px;">'
-        html +=    '<span style="margin-right:21px;">78%</span>'
-        html +=    '<img src="../image/voteBtn.png">'
-        html +=   '</div>'
-        html +=  '</div>'
-        //板块--蜀
-        html +=  '<div class="main-wei">'
-        html +=   '<img src="../image/shuBG.png">'
-        html +=   '<div class="wu">'
-        html +=    '<span>魏</span>'
-        html +=    '<img src="../image/progress-61.png" style="width:210px;margin:10px 10px 0 8px;">'
-        html +=    '<span style="margin-right:21px;">61%</span>'
-        html +=    '<img src="../image/voteBtn.png">'
-        html +=   '</div>'
-        html +=   '<div class="shu">'
-        html +=    '<span>吴</span>'
-        html +=    '<img src="../image/progress-78.png" style="width:210px;margin:10px 10px 0 8px;">'
-        html +=    '<span style="margin-right:21px;">48%</span>'
-        html +=    '<img src="../image/voteBtn.png">'
-        html +=   '</div>'
-        html +=  '</div>'
-        //板块--吴
-        html +=  '<div class="main-wei">'
-        html +=   '<img src="../image/wuBG.png">'
-        html +=   '<div class="wu">'
-        html +=    '<span>蜀</span>'
-        html +=    '<img src="../image/shuprogress-61.png" style="width:210px;margin:10px 10px 0 8px;">'
-        html +=    '<span style="margin-right:21px;">61%</span>'
-        html +=    '<img src="../image/voteBtn.png">'
-        html +=   '</div>'
-        html +=   '<div class="shu">'
-        html +=    '<span>吴</span>'
-        html +=    '<img src="../image/weiprogress-48.png" style="width:210px;margin:10px 10px 0 8px;">'
-        html +=    '<span style="margin-right:21px;">48%</span>'
-        html +=    '<img src="../image/voteBtn.png">'
-        html +=   '</div>'
-        html +=  '</div>'
-        html +=  '</div>'
-        html +=  '</div>'
-        html +=  '</div>'
+        html += '<div class="alert-box flex">'
+        html += '<div class="covenant-content">'
+            // 标题
+        html += '<div class="title">'
+        html += '<span class="title-text">盟约</span>'
+        html += '<img src="../image/closes1.png" class="close" onclick="$(\'#covenant\').hide()">'
+        html += '</div>'
+        html += '<div class="main flex" style="flex-wrap:wrap;">'
+            //板块--魏
+        html += '<div class="main-wei">'
+        html += '<img src="../image/weiBG.png">'
+        html += '<div class="wu">'
+        html += '<span>吴</span>'
+        html += '<img src="../image/progress-51.png" style="width:210px;margin:10px 10px 0 8px;">'
+        html += '<span style="margin-right:21px;">51%</span>'
+        html += '<img src="../image/voteBtn.png">'
+        html += '</div>'
+        html += '<div class="shu">'
+        html += '<span>蜀</span>'
+        html += '<img src="../image/progress-78.png" style="width:210px;margin:10px 10px 0 8px;">'
+        html += '<span style="margin-right:21px;">78%</span>'
+        html += '<img src="../image/voteBtn.png">'
+        html += '</div>'
+        html += '</div>'
+            //板块--蜀
+        html += '<div class="main-wei">'
+        html += '<img src="../image/shuBG.png">'
+        html += '<div class="wu">'
+        html += '<span>魏</span>'
+        html += '<img src="../image/progress-61.png" style="width:210px;margin:10px 10px 0 8px;">'
+        html += '<span style="margin-right:21px;">61%</span>'
+        html += '<img src="../image/voteBtn.png">'
+        html += '</div>'
+        html += '<div class="shu">'
+        html += '<span>吴</span>'
+        html += '<img src="../image/progress-78.png" style="width:210px;margin:10px 10px 0 8px;">'
+        html += '<span style="margin-right:21px;">48%</span>'
+        html += '<img src="../image/voteBtn.png">'
+        html += '</div>'
+        html += '</div>'
+            //板块--吴
+        html += '<div class="main-wei">'
+        html += '<img src="../image/wuBG.png">'
+        html += '<div class="wu">'
+        html += '<span>蜀</span>'
+        html += '<img src="../image/shuprogress-61.png" style="width:210px;margin:10px 10px 0 8px;">'
+        html += '<span style="margin-right:21px;">61%</span>'
+        html += '<img src="../image/voteBtn.png">'
+        html += '</div>'
+        html += '<div class="shu">'
+        html += '<span>吴</span>'
+        html += '<img src="../image/weiprogress-48.png" style="width:210px;margin:10px 10px 0 8px;">'
+        html += '<span style="margin-right:21px;">48%</span>'
+        html += '<img src="../image/voteBtn.png">'
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
         html += '</div>'
         $('body').append(html);
 
-  }else{
+    } else {
 
-  }
+    }
 }
 
 

@@ -179,7 +179,7 @@ function pubKeySign(eosName) {
 
 }
 
-$(function() {
-    // connectEOS();
+// $(function() {
+//     // connectEOS();
 
-})
+// })
