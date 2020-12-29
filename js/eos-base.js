@@ -96,8 +96,8 @@ function eosLogin() {
         window.checkScatter(function(user) {
             window.pubKeySign(user.name);
 
-            window.currencyBalance(user.name)
-            window.getUserTime(user.name);
+            // window.currencyBalance(user.name)
+            // window.getUserTime(user.name);
             resolve();
         })
     })
