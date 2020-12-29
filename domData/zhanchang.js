@@ -343,7 +343,7 @@ function showCovenant() {
 function showFlagBlod(flagBlod,flagTime,id1,id2,HP,Ass){
   flagBlod=new CountUp(id1,0,0,0,3,options)
   flagBlod.update(HP)
-  flagTime=new CountUp(id2,0,0,0,3,{
+  flagTime=new CountUp(id2,0,0.0000,4,3,{
     useEasing: true,
     useGrouping: false,
     separator: ',',
