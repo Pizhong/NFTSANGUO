@@ -16,7 +16,6 @@ window.chainId;
 
 
 function getRandomApi() {
-    console.log(window.API_ENDPOINTS, 999999999);
     const index = Math.floor(Math.random() * window.API_ENDPOINTS.length);
     return window.API_ENDPOINTS[index];
 }
