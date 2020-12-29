@@ -9,7 +9,7 @@
 
 
 function getStorychapeList(fun){
-	var api = get_random_api();
+	var api = getRandomApi();
 	var selfData = {
 	    json: true, // Get the response as json
 	    code: "xkingbattle2", // Contract that we target
@@ -41,7 +41,7 @@ function getStorychapeList(fun){
 
 
 function getBulltin(fun){
-	var api = get_random_api();
+	var api = getRandomApi();
 	var selfData = {
 	    json: true, // Get the response as json
 	    code: "xkingbattle2", // Contract that we target
@@ -63,7 +63,7 @@ function getBulltin(fun){
 }
 
 function getUserTime(name){
-  var api = get_random_api() ;
+  var api = getRandomApi() ;
   $.post(api + "/v1/chain/get_currency_balance",'{"code":"xpettimecore" ,"symbol":"TIME","account":"'+ name +'"}',
   function(data,status){
     console.log(data,'time');

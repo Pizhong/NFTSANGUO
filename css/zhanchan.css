@@ -212,6 +212,13 @@ header {
     left: 46px;
     display: none;
 }
+.flag-blod{
+  width: 106px;
+  padding: 5px;
+  background: url(../image/flag-blodBG.png) no-repeat;
+}
+
+
 
 .main-box2 {
     width: 183px;

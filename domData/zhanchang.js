@@ -336,6 +336,13 @@ function showCovenant(){
   }
 }
 
+
+
+
+
+
+
+
 $(document).ready(showCovenant())
 export default {
     popUps,

@@ -436,7 +436,7 @@ function getUserOnKingAct(num) {
  * @return {*}
  */
 async function getMyTreasureBox(){
-  var api = get_random_api();
+  var api = getRandomApi();
   var selfData = {
       json: true,
       code: kingContractName,
