@@ -369,7 +369,7 @@ span {
     color: #ecd9bb;
 }
 
-.alert-publicly {
+.alert-publicly{
     position: fixed;
     left: 0;
     top: 0;
@@ -528,6 +528,7 @@ span {
 
 .alert-publicly .alert-box .action-message-content {
     width: 494px;
+    height: 550px;
     text-align: center;
     background: url(../image/action-message-bottom.png) no-repeat;
     position: relative;

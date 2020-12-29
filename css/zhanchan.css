@@ -576,3 +576,76 @@ header {
     z-index: 999;
     cursor: pointer;
 }
+
+
+/* 盟约弹窗 */
+.alert-covenant{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0,0,0,.5); */
+  z-index: 999;
+}
+.alert-covenant .alert-box{
+  height: 100%;
+}
+
+.covenant-content{
+  width: 493px;
+  height: 682px;
+  background: url(../image/covenantBG.png) no-repeat;
+}
+.covenant-content .main{
+  margin-top: 15px;
+}
+.covenant-content .title{
+  width: 100%;
+  height: 51px;
+  line-height: 51px;
+  text-align: center;
+  background: url(../image/covenant-titleBG.png) no-repeat;
+  position: relative;
+}
+.title-text{
+  color: #fff;
+  font-size: 21.66px;
+}
+.covenant-content .title .close{
+  position: absolute;
+  top: 20%;
+  right: 3%;
+}
+.covenant-content .close{
+  cursor: pointer;
+}
+.main-wei{
+  width: 443px;
+  height: 189px;
+  background: url(../image/covenant-mainBG.png) no-repeat;
+  text-align: center;
+  padding-top: 14px;
+  padding-left: 14px;
+}
+.wu,
+.shu{
+  color:#330000 ;
+  font-size: 20.21;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 14px;
+}
+
+.wu span{
+  float: left;
+}
+.wu img{
+  float: left;
+}
+.shu span{
+  float: left;
+}
+.shu img {
+  float: left;
+}
