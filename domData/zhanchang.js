@@ -1,4 +1,4 @@
-// 战场dom数据操作
+// dom数据操作 ---> zhanchan.js
 
 
 
@@ -43,7 +43,7 @@ function showActionMessage() {
         html += '<div class="alert-publicly" id="action-message" style="display: none;">';
         html += '<div class="alert-box flex">';
         html += '<div class="action-message-content" >';
-        html += '<img src="../image/war-report-close.png" class="close" onclick="$(\'#action-message\').hide(),$(\'#battle-target\').hide()"></img>'
+        html += '<img src="../image/war-report-close.png" class="close" onclick="$(\'#action-message, #battle-target\').hide()"></img>'
         html += '<div class="action-message-box1">';
         html += '<p>行动信息</p>'
         html += '<div class="action-message-icon-box">'
@@ -179,7 +179,7 @@ function estimatedResultShow() {
 
 function getBattleLog() {
     var lower = Number(getCookie("battlelog")) || '';
-    var api = get_random_api();
+    var api = getRandomApi();
     var selfData = {
         json: true,
         code: kingContractName,
@@ -193,7 +193,7 @@ function getBattleLog() {
         reverse: true,
         show_payer: false,
     }
-    var api = get_random_api();
+    var api = getRandomApi();
     getLinkData(api, selfData, function(data) {
         // console.log('battlelogData', data);
         var obj = data.rows;
