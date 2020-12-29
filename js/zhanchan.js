@@ -62,7 +62,17 @@ var globalCountry = '';
 var battlelogTimer = ''; //battlelog定时器
 var logArray = []; //列表数组
 var treasureMsg = []; //军旗表相关数据
-var treasureTimer = '';
+var treasureTimer = ''; //军旗的轮询
+var flagBlod={
+  1:'',
+  2:'',
+  3:''
+} //军旗血条数值
+var flagTime={
+  1:'',
+  2:'',
+  3:''
+} //军旗TIme值
 // 数字格式化
 function numberFormat(num) {
     if (num >= 100000000) {
@@ -461,16 +471,26 @@ async function getMyTreasureBox() {
         if (treasureMsg["kingdomid"] == 1 && treasureMsg["HP"] > 0 && effectiveTime > nowTime) {
             // console.log('魏国');
             $(".box1-flag").show()
+            domData.showFlagBlod(flagBlod[1],flagTime[1],"wei-flag-blod-text","wei-flag-time",treasureMsg["HP"],treasureMsg["ass"])
+            
         } else if (treasureMsg["kingdomid"] == 2 && treasureMsg["HP"] > 0 && effectiveTime > nowTime) {
             // console.log("蜀国");
             $(".box2-flag").show()
+            domData.showFlagBlod(flagBlod[2],flagTime[2],"shu-flag-blod-text","shu-flag-time",treasureMsg["HP"],treasureMsg["ass"])
 
         } else if (treasureMsg["kingdomid"] == 3 && treasureMsg["HP"] > 0 && effectiveTime > nowTime) {
             // console.log("吴国");
             $(".box4-flag").show()
+            domData.showFlagBlod(flagBlod[3],flagTime[4],"wu-flag-blod-text","wu-flag-time",treasureMsg["HP"],treasureMsg["ass"])
 
         }
     }
+   setTimeout(() => {
+    document.getElementById("wei-flag-blod-text").innerHTML = numberFormat(document.getElementById("wei-flag-blod-text").innerHTML)
+    document.getElementById("shu-flag-blod-text").innerHTML = numberFormat(document.getElementById("shu-flag-blod-text").innerHTML)
+    document.getElementById("wu-flag-blod-text").innerHTML = numberFormat(document.getElementById("wu-flag-blod-text").innerHTML)
+
+   }, 3500);
 }
 
 
@@ -507,7 +527,9 @@ window.zhanchang = {
     globalCountry,
     battlelogTimer,
     logArray,
-    treasureTimer
+    treasureTimer,
+    flagBlod,
+    flagTime
 
 }
 $(document).ready(() => (zhanchang.showWarReport(), updateActionPoint()))
@@ -515,6 +537,6 @@ battlelogTimer = setInterval(function() {
     domData.getBattleLog();
 }, 3000)
 
-treasureTimer = setInterval(() => {
+treasureTimer = setTimeout(() => {
     getMyTreasureBox()
-}, 3000)
+}, 500)
