@@ -59,11 +59,11 @@
                 <p class="box1-p2" id="actionPoint1" style="display:none;">--</p>
                 <!-- <img class="box1-img1" src="../image/zhanchan-box1.png" alt=""> -->
                 <div class="box1-img" onclick="zhanchang.showBattleTarget(1)"></div>
-                <img src="../image/wei-flag.png" class="box1-flag">
+                <img src="../image/wei-flag.png" class="box1-flag" id="box1-flag">
                 <div class="flag-blod">
-                  <p>血量<span id="wei-flag-blod-text">--</span></p>
-                  <img src="../image/flag-blod.png" alt="">
-                  <p id="wei-flag-time">--</p>
+                    <p>血量<span id="wei-flag-blod-text">--</span></p>
+                    <img src="../image/flag-blod.png" alt="">
+                    <p id="wei-flag-time">--</p>
                 </div>
                 <div class="box1-jianli-che">
                     <img src="../image/che.png" alt="">
@@ -76,11 +76,11 @@
                 <p class="box2-p1">吴国驻军</p>
                 <p class="box2-p2" id="actionPoint3" style="display:none;">--</p>
                 <div class="box2-img" onclick="zhanchang.showBattleTarget(3)"></div>
-                <img src="../image/wu-flag.png" class="box2-flag">
+                <img src="../image/wu-flag.png" class="box2-flag" id="box2-flag">
                 <div class="flag-blod">
-                  <p>血量<span id="wu-flag-blod-text">--</span></p>
-                  <img src="../image/flag-blod.png" alt="">
-                  <p id="wu-flag-time">--</p>
+                    <p>血量<span id="wu-flag-blod-text">--</span></p>
+                    <img src="../image/flag-blod.png" alt="">
+                    <p id="wu-flag-time">--</p>
                 </div>
                 <div class="box1-jianli-che">
                     <img src="../image/che.png" alt="">
@@ -112,9 +112,9 @@
 
         </div> -->
                 <div class="flag-blod" style="top: 138px;left: -66px;">
-                  <p>血量<span id="shu-flag-blod-text">--</span></p>
-                  <img src="../image/flag-blod.png" alt="">
-                  <p id="shu-flag-time">--</p>
+                    <p>血量<span id="shu-flag-blod-text">--</span></p>
+                    <img src="../image/flag-blod.png" alt="">
+                    <p id="shu-flag-time">--</p>
                 </div>
                 <div class="box1-jianli-che" style="top:93px;left: -142px;">
                     <img src="../image/che.png" alt="">
@@ -122,7 +122,7 @@
                       border-bottom: 1px solid #fff;
                   "></span><br><span id="burse23"></span></p>
                 </div>
-                <img src="../image/shu-flag.png" alt="" class="box4-flag">
+                <img src="../image/shu-flag.png" alt="" class="box4-flag" id="box3-flag">
             </div>
             <div class="blod-box1 blod-box">
                 <p>血量：<span id="totalHp1">--</span></p>
@@ -200,7 +200,8 @@
                 <ul>
                     <li><img src="../image/right-top-icon-1.png" alt="" onclick='$("#war-report").show()'></li>
                     <!--战报-->
-                    <li><img src="../image/covenant-icon.png" alt="" onclick='$("#covenant").show()'></li><!--结盟-->
+                    <li><img src="../image/covenant-icon.png" alt="" onclick='$("#covenant").show()'></li>
+                    <!--结盟-->
                     <li><img src="../image/left-icon-2.png" alt="" onclick="zhanchang.showActionMessage()" id="battle-target" style="display: none;"></li>
                     <!--战斗目标-->
                 </ul>

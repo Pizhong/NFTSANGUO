@@ -212,19 +212,20 @@ header {
     left: 46px;
     display: none;
 }
-.flag-blod{
-  width: 110px;
-  padding: 5px;
-  background: url(../image/flag-blodBG.png) no-repeat;
-  position: absolute;
-  top: 212px;
-  left: 0;
-  font-size: 12.99px;
-  color: #612b27;
+
+.flag-blod {
+    width: 110px;
+    padding: 5px;
+    background: url(../image/flag-blodBG.png) no-repeat;
+    position: absolute;
+    top: 212px;
+    left: 0;
+    font-size: 12.99px;
+    color: #612b27;
 }
 
-.flag-blod span{
-  margin-left: 35px;
+.flag-blod span {
+    margin-left: 35px;
 }
 
 .main-box2 {
@@ -596,73 +597,85 @@ header {
 
 
 /* 盟约弹窗 */
-.alert-covenant{
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  /* background: rgba(0,0,0,.5); */
-  z-index: 999;
-}
-.alert-covenant .alert-box{
-  height: 100%;
+
+.alert-covenant {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(0,0,0,.5); */
+    z-index: 999;
 }
 
-.covenant-content{
-  width: 493px;
-  height: 682px;
-  background: url(../image/covenantBG.png) no-repeat;
+.alert-covenant .alert-box {
+    height: 100%;
 }
-.covenant-content .main{
-  margin-top: 15px;
+
+.covenant-content {
+    width: 493px;
+    height: 682px;
+    background: url(../image/covenantBG.png) no-repeat;
 }
-.covenant-content .title{
-  width: 100%;
-  height: 51px;
-  line-height: 51px;
-  text-align: center;
-  background: url(../image/covenant-titleBG.png) no-repeat;
-  position: relative;
+
+.covenant-content .main {
+    margin-top: 15px;
 }
-.title-text{
-  color: #fff;
-  font-size: 21.66px;
+
+.covenant-content .title {
+    width: 100%;
+    height: 51px;
+    line-height: 51px;
+    text-align: center;
+    background: url(../image/covenant-titleBG.png) no-repeat;
+    position: relative;
 }
-.covenant-content .title .close{
-  position: absolute;
-  top: 20%;
-  right: 3%;
+
+.title-text {
+    color: #fff;
+    font-size: 21.66px;
 }
-.covenant-content .close{
-  cursor: pointer;
+
+.covenant-content .title .close {
+    position: absolute;
+    top: 20%;
+    right: 3%;
 }
-.main-wei{
-  width: 443px;
-  height: 189px;
-  background: url(../image/covenant-mainBG.png) no-repeat;
-  text-align: center;
-  padding-top: 14px;
-  padding-left: 14px;
+
+.covenant-content .close {
+    cursor: pointer;
 }
+
+.main-wei {
+    width: 443px;
+    height: 189px;
+    background: url(../image/covenant-mainBG.png) no-repeat;
+    text-align: center;
+    padding-top: 14px;
+    padding-left: 14px;
+}
+
 .wu,
-.shu{
-  color:#330000 ;
-  font-size: 20.21;
-  height: 40px;
-  line-height: 40px;
-  margin-bottom: 14px;
+.shu {
+    color: #330000;
+    font-size: 20.21;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 14px;
 }
 
-.wu span{
-  float: left;
+.wu span {
+    float: left;
 }
-.wu img{
-  float: left;
+
+.wu img {
+    float: left;
 }
-.shu span{
-  float: left;
+
+.shu span {
+    float: left;
 }
+
 .shu img {
-  float: left;
+    float: left;
 }

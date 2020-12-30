@@ -143,6 +143,9 @@ function estimatedResultShow() {
             // console.log(zhanchang.myknightMsg[userActionKing].power, 'myknightMsg[userActionKing].power');
             // console.log(num, 'num');
             // console.log(poingConstant, 'poingConstant');
+            if ($("#box" + zhanchang.userActionKing + "-flag").length === 1) {
+                tag /= 10;
+            }
             if (tag < 0) {
                 tag = 0;
             }
@@ -159,6 +162,9 @@ function estimatedResultShow() {
             html += '  <span>预计能给 ' + zhanchang.getKingName(zhanchang.userActionsOnKing) + ' 加 ' + tag + ' 血量 </span>';
         } else {
             var tag = Number(zhanchang.myknightMsg[zhanchang.userActionKing].power * num * poingConstant * 3);
+            if ($("#box" + zhanchang.userActionKing + "-flag").length === 1) {
+                tag /= 10;
+            }
             if (tag < 0) {
                 tag = 0;
             }
@@ -336,22 +342,22 @@ function showCovenant() {
 
 
 /**
- * @description:军旗血条展示 
+ * @description:军旗血条展示
  * @param {*}
  * @return {*}
  */
-function showFlagBlod(flagBlod,flagTime,id1,id2,HP,Ass){
-  flagBlod=new CountUp(id1,0,0,0,3,options)
-  flagBlod.update(HP)
-  flagTime=new CountUp(id2,0,0.0000,4,3,{
-    useEasing: true,
-    useGrouping: false,
-    separator: ',',
-    decimal: '.',
-    prefix: '',
-    suffix: ' ' + String(Ass).split(' ')[1]
-})
-  flagTime.update(parseFloat(Ass))
+function showFlagBlod(flagBlod, flagTime, id1, id2, HP, Ass) {
+    flagBlod = new CountUp(id1, 0, 0, 0, 3, options)
+    flagBlod.update(HP)
+    flagTime = new CountUp(id2, 0, 0.0000, 4, 3, {
+        useEasing: true,
+        useGrouping: false,
+        separator: ',',
+        decimal: '.',
+        prefix: '',
+        suffix: ' ' + String(Ass).split(' ')[1]
+    })
+    flagTime.update(parseFloat(Ass))
 }
 
 
