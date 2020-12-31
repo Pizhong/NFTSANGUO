@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <!-- <meta name="viewport" content="width=device-width,width=750px,minimum-scale=0.36, user-scalable=no"> -->
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,viewport-fit=cover"> -->
+    <meta name="viewport" content="width=device-width,width=520px,minimum-scale=0.36, user-scalable=no">
+
+    <link rel="icon" href="../imgs/favicon.png">
+    <title>三国争霸</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/zhanchan.css">
+</head>
+
+<body>
+    <div class="app1">
+        <header>
+            <div class="head-top">
+                <div class="header-top-left">
+                    <img src="../imgs/jues-small.png" style="position: absolute;top: 5px;left: 5px;">
+                </div>
+                <div class="flex header-top-right">
+                    <div class="box1">
+                        <div class="box1-left">
+                            <span class="myName" style="font-size: 20px;">--</span>
+                        </div>
+                        <!-- <div class="box1-right">--</div> -->
+                    </div>
+                    <div class="box2">
+                        <div class="box2-left">
+                            <img src="../imgs/head_icon2_small.png" alt="">
+                        </div>
+                        <div class="box2-midd">--</div>
+                        <!-- <div class="box2-right">
+                <img src="../imgs/add_button.png" alt="">
+                <img src="../imgs/red_circle.png" alt="" style="position: absolute;top: -5px;left: 25px;">
+              </div> -->
+                    </div>
+                    <div class="box3">
+                        <div class="box3-left">
+                            <img src="../imgs/head_icon3_small.png" alt="">
+                        </div>
+                        <div class="box3-midd">--</div>
+                        <!-- <div class="box3-right">
+                <img src="../imgs/add_button.png" alt="">
+                <img src="../imgs/red_circle.png" alt="" style="position: absolute;top: -5px;left: 25px;">
+              </div> -->
+                    </div>
+                </div>
+                <div class="progress_bar"></div>
+            </div>
+        </header>
+        <div class="main">
+            <div class="main-box1">
+                <p class="box1-p1">魏国驻军</p>
+                <p class="box1-p2" id="actionPoint1" style="display:none;">--</p>
+                <!-- <img class="box1-img1" src="../imgs/zhanchan-box1.png" alt=""> -->
+                <div class="box1-img" onclick="zhanchang.showBattleTarget(1)"></div>
+                <img src="../imgs/wei-flag.png" class="box1-flag" id="box1-flag">
+                <div class="flag-blod">
+                  <p>血量<span id="wei-flag-blod-text">--</span></p>
+                  <img src="../imgs/flag-blod.png" alt="">
+                  <p id="wei-flag-time">--</p>
+                </div>
+                <div class="box1-jianli-che">
+                    <img src="../imgs/che.png" alt="">
+                    <p><span id="burse1" style="
+                      border-bottom: 1px solid #fff;
+                  "></span><br><span id="burse21"></span></p>
+                </div>
+            </div>
+            <div class="main-box2">
+                <p class="box2-p1">吴国驻军</p>
+                <p class="box2-p2" id="actionPoint3" style="display:none;">--</p>
+                <div class="box2-img" onclick="zhanchang.showBattleTarget(3)"></div>
+                <img src="../imgs/wu-flag.png" class="box2-flag" id="box2-flag">
+                <div class="flag-blod">
+                  <p>血量<span id="wu-flag-blod-text">--</span></p>
+                  <img src="../imgs/flag-blod.png" alt="">
+                  <p id="wu-flag-time">--</p>
+                </div>
+                <div class="box1-jianli-che">
+                    <img src="../imgs/che.png" alt="">
+                    <p><span id="burse2" style="
+                      border-bottom: 1px solid #fff;
+                  "></span><br><span id="burse22"></span></p>
+                </div>
+            </div>
+            <div class="main-box3">
+                <p class="box3-p">州城-洛阳</p>
+            </div>
+            <div class="main-box4">
+                <div class="main-box4-1">
+                    <p class="box4-1-p1">蜀国驻军</p>
+                    <p class="box1-p2" id="actionPoint2" style="position: absolute;top: 70px;left: -32px;display: none;">--</p>
+                    <!-- <div class="box4-1-p2">
+            <img src="../imgs/zhu.png" alt="">
+            <p>x4</p>
+          </div> -->
+                    <div class="box4-img-1" onclick="zhanchang.showBattleTarget(2)"></div>
+                </div>
+                <!-- <div class="main-box4-2">
+          <p class="box4-2-p1">要塞13</p>
+          <div class="box4-2-p2">
+            <img src="../imgs/mian.png" alt="">
+            <p>00:05:46</p>
+          </div>
+          <div class="box4-img-2" onclick="showBattleTarget()"></div>
+
+        </div> -->
+                <div class="flag-blod" style="top: 138px;left: -66px;">
+                  <p>血量<span id="shu-flag-blod-text">--</span></p>
+                  <img src="../imgs/flag-blod.png" alt="">
+                  <p id="shu-flag-time">--</p>
+                </div>
+                <div class="box1-jianli-che" style="top:93px;left: -142px;">
+                    <img src="../imgs/che.png" alt="">
+                    <p><span id="burse3" style="
+                      border-bottom: 1px solid #fff;
+                  "></span><br><span id="burse23"></span></p>
+                </div>
+                <img src="../imgs/shu-flag.png" alt="" class="box4-flag" id="box3-flag">
+            </div>
+            <div class="blod-box1 blod-box">
+                <p>血量：<span id="totalHp1">--</span></p>
+                <img src="../imgs/blod.png" alt="">
+                <p>防御：<span id="def1"></span></p>
+                <!-- <img src="../imgs/bule .png" alt=""> -->
+                <p style="margin-top: 5px;">行动力 : <span>(<span id="supplyACT1"></span> / <span id="totalACT1"></span> )</span>
+                </p>
+                <p class="blod-box3-p">
+                    <span>行动点：</span>
+                    <span id="callable-action-points1">0</span>
+                    <!-- <img src="../imgs/btn-1.png" class="btn-1" id="box1-btn" style="display: none;" onclick="zhanchang.getActionPotint(event, 1)"> -->
+                </p>
+                <p class="blod-box3-p" style="justify-content: space-around;">
+                    <img src="../imgs/btn-2.png" class="btn-1" id="box-btn-3" onclick="zhanchang.showBattleTarget(1)">
+                    <img src="../imgs/btn-1.png" class="btn-1" id="box-btn-1" onclick="zhanchang.receiveActionPonit(event, 1)">
+                </p>
+            </div>
+            <div class="blod-box2 blod-box">
+                <p>血量：<span id="totalHp3">--</span></p>
+                <img src="../imgs/blod.png" alt="">
+                <p>防御：<span id="def3"></span></p>
+                <!-- <img src="../imgs/bule .png" alt=""> -->
+                <p style="margin-top: 5px;">行动力 : <span>(<span id="supplyACT2"></span> / <span id="totalACT2"></span> )</span>
+                </p>
+                <p class="blod-box3-p">
+                    <span>行动点：</span>
+                    <span id="callable-action-points3">0</span>
+                    <!-- <img src="../imgs/btn-1.png" class="btn-1" id="box3-btn" style="display: none;" alt="" onclick="zhanchang.getActionPotint(event,3)"> -->
+                </p>
+                <p class="blod-box3-p" style="justify-content: space-around;">
+                    <img src="../imgs/btn-2.png" class="btn-1" id="box-btn-3" onclick="zhanchang.showBattleTarget(3)">
+                    <img src="../imgs/btn-1.png" class="btn-1" id="box-btn-3" onclick="zhanchang.receiveActionPonit(event, 3)">
+                </p>
+
+            </div>
+            <div class="blod-box3 blod-box">
+                <p>血量：<span id="totalHp2">--</span></p>
+                <img src="../imgs/blod.png" alt="">
+                <p>防御：<span id="def2"></span></p>
+                <!-- <img src="../imgs/bule .png" alt=""> -->
+                <p style="margin-top: 5px;">行动力 : <span>(<span id="supplyACT3"></span> / <span id="totalACT3"></span> )</span>
+                </p>
+                <p class="blod-box3-p">
+                    <span>行动点：</span>
+                    <span id="callable-action-points2">0</span>
+                </p>
+                <p class="blod-box3-p" style="justify-content: space-around;">
+                    <img src="../imgs/btn-2.png" class="btn-1" id="box-btn-3" onclick="zhanchang.showBattleTarget(2)">
+                    <img src="../imgs/btn-1.png" class="btn-1" id="box-btn-2" onclick="zhanchang.receiveActionPonit(event, 2)">
+                </p>
+
+            </div>
+            <!-- <div class="jianli">
+        <img src="../imgs/baoxiang.png" alt="" class="jianli-baoxiang">
+        <div class="jianli-che">
+          <img src="../imgs/che.png" alt="">
+          <p>99999.9999</p>
+        </div>
+      </div> -->
+
+        </div>
+        <div class="all-icon">
+            <!-- <div class="all-icon-left"> -->
+            <!-- <ul> -->
+            <!-- <li><img src="../imgs/left-icon-1.png" alt=""></li> 政治任务 -->
+            <!-- <li><img src="../imgs//left-icon-3.png" alt=""></li>武将目标 -->
+            <!-- <li><img src="../imgs//left-icon-4.png" alt=""></li>日常 -->
+            <!-- <li><img src="../imgs/left-icon-5.png" alt=""></li>我要变强 -->
+            <!-- <li><img src="../imgs/left-icon-6.png" alt=""></li>奖励 -->
+            <!-- <li><img src="../imgs/left-icon-7.png" alt=""></li>签到 -->
+            <!-- </ul> -->
+            <!-- </div> -->
+            <div class="all-icon-right-top">
+                <ul>
+                    <li><img src="../imgs/right-top-icon-1.png" alt="" onclick='$("#war-report").show()'></li>
+                    <!--战报-->
+                    <li><img src="../imgs/covenant-icon.png" alt="" onclick='$("#covenant").show()'></li><!--结盟-->
+                    <li><img src="../imgs/left-icon-2.png" alt="" onclick="zhanchang.showActionMessage()" id="battle-target" style="display: none;"></li>
+                    <!--战斗目标-->
+                </ul>
+            </div>
+            <!-- <div class="all-icon-right-bottom"> -->
+            <!-- <ul> -->
+            <!-- <li><img src="../imgs/right-bottom-icon-1.png" alt=""></li>战役 -->
+            <!-- <li><img src="../imgs/right-bottom-icon-2.png" alt=""></li>主城 -->
+            <!-- </ul> -->
+            <!-- </div> -->
+            <!-- <div class="all-icon-bottom"> -->
+            <!-- <ul> -->
+            <!-- <li><img src="../imgs/bottom-icon-1.png" alt=""></li>道具 -->
+            <!-- <li><img src="../imgs/bottom-icon-2.png" alt=""></li>武将 -->
+            <!-- <li><img src="../imgs/bottom-icon-3.png" alt=""></li>事件 -->
+            <!-- <li><img src="../imgs/bottom-icon-4.png" alt=""></li>内政 -->
+            <!-- <li><img src="../imgs/bottom-icon-5.png" alt=""></li>商城 -->
+            <!-- <li><img src="../imgs/bottom-icon-6.png" alt=""></li>更多 -->
+            <!-- </ul> -->
+            <!-- </div> -->
+        </div>
+        <img src="../imgs/goback.png" alt="" class="goback" onclick="zhanchang.gobackIndex()">
+    </div>
+</body>
+
+<script type="text/javascript" src="../lib/jquery-2.1.0.min.js" defer></script>
+<script type="text/javascript" src="../lib/countUp.js" defer></script>
+<script type="text/javascript" src="../lib/eos16.0.0.min.js" defer></script>
+<script type="text/javascript" src="../lib/scatterjs-core.min.js" defer></script>
+<script type="text/javascript" src="../lib/scatterjs-plugin-eosjs.min.js" defer></script>
+<script type="text/javascript" src="../requestApi/data-api.js?v=2020122919" defer></script>
+<script type="module" src="../js/common.js?v=2020122919"></script>
+<script type="module" src="../js/zhanchan.js?v=20201219"></script>
+<script type="text/javascript" src="../js/eos-base.js?v=2020122919" defer></script>
+<script type="module" src="../js/index.js?v=2020120118"></script>
+<!-- <script type="text/javascript" src="../js/common.js"></script> -->
+
+</html>

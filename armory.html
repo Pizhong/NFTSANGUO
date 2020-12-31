@@ -1,0 +1,224 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <!-- <meta name="viewport" content="width=device-width,width=750px,minimum-scale=0.36, user-scalable=no"> -->
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,viewport-fit=cover"> -->
+    <meta name="viewport" content="width=device-width,width=520px,minimum-scale=0.36, user-scalable=no">
+
+
+    <link rel="icon" href="./imgs/favicon.png">
+    <title>三国争霸</title>
+    <link rel="stylesheet" type="text/css" href="./css/common.css?v=2020122919">
+    <link rel="stylesheet" type="text/css" href="./css/armory.css">
+    <link rel="stylesheet" type="text/css" href="./css/navList.css?v=2020122919">
+  </head>
+  <body style="font-size: 12px;">
+    <div class="app">
+
+
+<header>
+      <div class="head-top">
+        <div class="header-top-left">
+            <img src="imgs/jues-small.png" style="position: absolute;top: 5px;left: 5px;" onclick="getMenuPanel()">
+        </div>
+        <div class="flex header-top-right">
+            <div class="box1">
+              <div class="box1-left">
+                <!-- <img src="imgs/head_icon1.png" alt=""> -->
+                <span class="myName" style="font-size: 20px;"></span>
+              </div>
+              <!-- <div class="box1-right">208596</div> -->
+            </div>
+            <div class="box2">
+              <div class="box2-left">
+                <img src="imgs/head_icon2_small.png" alt="">
+              </div>
+              <div class="box2-midd">--</div>
+              <!-- <div class="box2-right">
+                <img src="imgs/add_button.png" alt="">
+                <img src="imgs/red_circle.png" alt="" style="position: absolute;top: -5px;left: 25px;">
+              </div> -->
+            </div>
+            <div class="box3">
+              <div class="box3-left">
+                <img src="imgs/head_icon3_small.png" alt="">
+              </div>
+              <div class="box3-midd">--</div>
+              <!-- <div class="box3-right">
+                <img src="imgs/add_button.png" alt="">
+                <img src="imgs/red_circle.png" alt="" style="position: absolute;top: -5px;left: 25px;">
+              </div> -->
+            </div>
+        </div>
+        <div class="progress_bar"></div>
+      </div>
+      <!-- <div class="top-bar">
+        <p><span class="myName"></span>昭告天下</p>
+        <p id="zhaogao-content">魏国的统统加血，其他的事情我来解决</p>
+        <img src="imgs/edit.png" alt="" class="top-bar-edit" onclick="getShowPublicly()">
+      </div> -->
+    </header>
+
+      <!-- 武器库 -->
+
+      <div class="guoKu">
+        <div class="guoKuNftListBox">
+          <!-- <ul class="clear"> -->
+          <ul>
+           
+            <!-- <li>
+              <img src="V1/imgs/nftShow.jpg">
+              <div class="text">品质:8888</div>
+            </li> -->
+          </ul>
+          <div class="KittiesGalleryPagination">
+            <div class="Pagination"></div>
+            <div class="all" onclick="selectMyStackNftAll()">全选</div>
+          </div>
+          <div class="mortgageBox flex">
+
+            <div class="actionBtn" onclick="unStacknftBoxShow()">武器出库</div>
+          </div>
+        </div>
+      </div>
+      <!-- <div style="height: 188px;"></div>
+      <div class="footer flex">
+        掠宝（https://www.xloot.io）游戏资产交易平台版权所有©2019-2020<br>
+        v.2020110900
+      </div> -->
+      
+
+      <div class="bottom flex">
+          <ul>
+
+
+            <li><a href="myArms.html"><img src="./imgs/bottom1.png"></a></li>
+            <li><a href="zhanchan.html"><img src="./imgs/bottom2.png"></a></li>
+            <li><a href="index.html"><img src="./imgs/bottom6.png"></a></li>
+            <li><a href="armory.html"><img src="./imgs/bottom3.png"></a></li>
+            <li><a href="#"><img src="./imgs/bottom5.png"></a></li>
+
+
+              <!-- <li><img src="./imgs/bottom1.png" id="select1" style="" onclick="goMyArms()"></li>
+              <li><img src="./imgs/bottom2.png" id="select2" style="" onclick="goZhanChan()"></li>
+              <li><img src="./imgs/bottom6.png" style="" onclick="goIndex()"></li>
+              <li><img src="./imgs/bottom3.png" id="select3" style="" onclick="goArmory()"></li>
+              <li><img src="./imgs/bottom5.png" id="select5" style="" onclick="goAlliance()"></li> -->
+          </ul>
+      </div>
+
+
+    </div>
+
+
+
+
+<div class="alert" id="unStacknftBox" style="display:none;">
+  <!-- <div class="alert" id="stacknftBox"> -->
+  <div class="flex" style="height:100%;">
+    <div class="content">
+      <div class="header flex">
+        <span>出库信息</span>
+        <span style="flex:1;">
+        </span>
+        <span onclick="$('#unStacknftBox').hide()">
+          <img src="./imgs/closes1.png" alt="" class="closeSvg">
+        </span>
+      </div>
+      <div class="stackCountryBox">
+        
+        <!-- <ul class="countryList flex">
+          <li onclick="selectStackCountry(1,this)" class="active">A国家</li>
+          <li onclick="selectStackCountry(2,this)">B国家</li>
+          <li onclick="selectStackCountry(3,this)">C国家</li>
+        </ul> -->
+        <div class="stackMsgBox flex">
+          <!-- 你确定花费2.1eos，上交21个武器进库到A国家吗？ -->
+        </div>
+        <div class="stackActionBox flex">
+          <div class="actionBtn" onclick="unStacknft()">确定出库</div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="alert" id="kingMsgSHow" style="display:none;">
+  <!-- <div class="alert" id="kingMsgSHow"> -->
+  <div class="flex" style="height:100%;">
+    <div class="content">
+      <div class="header flex">
+        <span id="kingActionTitle">--</span>
+        <span style="flex:1;">
+        </span>
+        <span onclick="$('#kingMsgSHow').hide()">
+          <img src="./imgs/closes1.png" alt="" class="closeSvg">
+        </span>
+      </div>
+      <div class="stackCountryBox">
+        
+        <ul class="countryList flex">
+          <!-- <li onclick="selectCountryAction(1,this)" class="active">A国家</li>
+          <li onclick="selectCountryAction(2,this)">B国家</li>
+          <li onclick="selectCountryAction(3,this)">C国家</li> -->
+        </ul>
+        <div class="kingMsgBox flex">
+          <!-- <div style="width: 100%;">
+            <div>A国家的血量：8888</div>
+            <div>A国家的防御：8888</div>
+            <div>你的行动点：8888</div>
+            <div>你的攻击力：8888</div>
+            <div>你确定花费10行动点，攻击A国家吗？</div>
+          </div> -->
+          
+          <!-- 你确定花费2.1eos，上交21个武器进库到A国家吗？ -->
+        </div>
+        <div class="stackActionBox flex">
+          <div class="actionBtn" onclick="userActionOK()">确定</div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="alert" id="descriptionMsgBox" style="display: none;">
+  <div class="flex" style="height:100%;">
+    <div class="content">
+      <div class="header flex">
+        <span class="desTitle">说明</span>
+        <span style="flex:1;"></span>
+        <span onclick="$('#descriptionMsgBox').hide()">
+          <img src="./imgs/closes1.png" alt="" class="closeSvg">
+        </span>
+      </div>
+      <div class="stackCountryBox">
+        <div style="height: 526px;line-height:25px;overflow-y: auto;background:url(./imgs/bglist.png) no-repeat;padding-left: 10px;">
+        </div>
+      </div>
+      <div class="flex">
+        <div class="actionBtn" onclick="$('#descriptionMsgBox').hide()">确定</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="./lib/jquery-2.1.0.min.js" defer></script>
+<script type="text/javascript" src="./lib/countUp.js" defer></script>
+<script type="text/javascript" src="./lib/eos16.0.0.min.js" defer></script>
+<script type="text/javascript" src="./lib/scatterjs-core.min.js" defer></script>
+<script type="text/javascript" src="./lib/scatterjs-plugin-eosjs.min.js" defer></script>
+<script type="text/javascript" src="./requestApi/data-api.js" defer></script>
+<script type="module" src="./js/common.js?v=2020122919"></script>
+<script type="text/javascript" src="./js/eos-base.js?v=2020122919" defer></script>
+<script type="module" src="./js/index.js?v=2020120118"></script>
+<script type="text/javascript" src="./js/armory.js"></script>
+<script type="text/javascript" src="./js/myArms.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,271 @@
+
+/* NFT List */
+.myNFT{
+  padding-bottom: 19px;
+}
+.myNFT .nftList{
+  padding: 19px 14px 10px;
+}
+.myNFT .nftBGLine{
+  width:520px;
+  height:10px;
+  background: url(../imgs/nftBtnBGLine.png) no-repeat;
+  background-size: 100% 100%;
+  margin-top:-16px;
+  margin-bottom: 25px;
+}
+.myNFT .nftList li{
+  /*width: 112px;*/
+  flex:1;
+  /*width: 80px;*/
+  height: 42px;
+  line-height: 42px;
+  font-size: 17.32px;
+  color: #838ba0;
+  margin-right: 8px;
+  text-align: center;
+  cursor: pointer;
+  background: url(../imgs/nftBtn_01.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+.myNFT .nftList li.active{
+  color: #ebdcb5;
+  background: url(../imgs/nftBtn_02.png) no-repeat;
+  background-size: 100% 100%;
+}
+.guoKuNftListBox,
+.myNftListBox{
+  width: 100%;
+  height: 624px;
+  padding:21px 35px;
+  box-sizing: border-box;
+  background: url(../imgs/nftListBG.png) no-repeat;
+}
+
+.guoKuNftListBox .nftQualityBox,
+.myNftListBox .nftQualityBox{
+  margin-top: 5px;
+  width: 100%;
+  height: 29px;
+  line-height: 23px;
+  font-size: 12px;
+  color: #ecd9bb;
+  box-sizing: border-box;
+  text-align: center;
+  background: url(../imgs/nftQualityBG.png) no-repeat;
+  background-position: bottom;
+}
+.guoKuNftListBox .stackTimeTag{
+  width: 100%;
+  height: 29px;
+  line-height: 29px;
+  font-size: 15px;
+  color: #ecd9bb;
+  box-sizing: border-box;
+  padding-right:10px;
+  text-align: right;
+}
+
+.commonPrizePool{
+  height: 37px;
+  line-height: 37px;
+  font-size: 15.88px;
+  color: #ecd9bb;
+  padding:0 40px;
+  box-sizing: border-box;
+}
+
+.guoKuNftListBox ul,
+.myNftListBox ul{
+  min-height: 490px;
+  /*margin-bottom: 10px;*/
+}
+.guoKuNftListBox ul li,
+.myNftListBox ul li{
+  width: 99px;
+  height: 156px;
+  padding:3px;
+  box-sizing: border-box;
+  background: url(../imgs/nftBG.png) no-repeat;
+  position: relative;
+  margin-right: 17px;
+  margin-bottom: 8px;
+  display: inline-block;
+  float: left;
+  cursor: pointer;
+}
+.guoKuNftListBox ul li:nth-child(4n),
+.myNftListBox ul li:nth-child(4n){
+  margin-right: 0;
+}
+.guoKuNftListBox ul li img,
+.myNftListBox ul li img{
+  width: 100%;
+}
+.guoKuNftListBox ul li .text,
+.myNftListBox ul li .text{
+  font-size: 12px;
+  color: #783d10;
+  position: absolute;
+  top:6px;
+  left:8px;
+  font-weight: bold;
+}
+
+
+.guoKuNftListBox ul li .kingText{
+  font-size: 12px;
+  color: #783d10;
+  position: absolute;
+  top: 76px;
+  right: 8px;
+  font-weight: bold;
+}
+
+.guoKuNftListBox ul li:before,
+.myNftListBox ul li:before{
+  content: '';
+  width:24px;
+  height:24px;
+  /*border: 3px solid #f90;*/
+  /*box-sizing: border-box;*/
+  position: absolute;
+  bottom:0;
+  left: 0;
+  /*display: none;*/
+  background: url(../imgs/nftQualityCheck.png) no-repeat;
+  background-position: bottom;
+}
+/*.guoKuNftListBox ul li .check,
+.myNftListBox ul li .check{
+  width:100%;
+  height: 100%;
+  border: 3px solid #f90;
+  box-sizing: border-box;
+  position: absolute;
+  top:0;
+  left: 0;
+  display: none;
+}
+*/
+/*.guoKuNftListBox ul li:hover:before,
+.myNftListBox ul li:hover:before,*/
+.guoKuNftListBox ul li.active:before,
+.myNftListBox ul li.active:before{
+  /*display: block;*/
+  background: url(../imgs/nftQualityCheckOn.png) no-repeat;
+}
+
+
+
+.actionBtn{
+  min-width: 155px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bolder;
+  color: #fff;
+  -webkit-text-stroke: 1px #ad7d3f;
+  background: url(../imgs/actionBG.png) no-repeat;
+  background-size: 100% 100%;
+  cursor: pointer;
+}
+
+.stackCountryBox{
+  padding:0 26px 26px 26px;
+  color: #ecd9bb;
+  font-size: 15.88px;
+}
+
+.countryList li{
+  /*width: 112px;*/
+  flex:1;
+  /*width: 80px;*/
+  height: 42px;
+  line-height: 42px;
+  font-size: 17.32px;
+  color: #838ba0;
+  margin-right: 8px;
+  text-align: center;
+  cursor: pointer;
+  background: url(../imgs/nftBtn_01.png) no-repeat;
+  background-size: 100% 100%;
+}
+.countryList li:hover,
+.countryList li.active{
+  color: #ebdcb5;
+  background: url(../imgs/nftBtn_02.png) no-repeat;
+  background-size: 100% 100%;
+}
+.stackMsgBox{
+  min-height: 333px;
+  font-size: 20px;
+}
+.kingMsgBox{
+  min-height: 333px;
+  font-size: 20px;
+  line-height: 35px;
+}
+.kingMsgBox input{
+  flex: 1;
+  background: none;
+  height: 42px;
+  line-height: 35px;
+  border:1px solid #ecd9bb;
+  padding:0 15px;
+  font-size: 20px;
+  color: #ecd9bb;
+  border-radius: 8px;
+}
+.noNftOnKingBox{
+  display: none;
+}
+
+.myKingMsgShowPanelBox{
+
+  width: 155px;
+  display: none;
+  position: absolute;
+  bottom:10px;
+  right:35px;
+
+  line-height: 17px;
+  font-size: 12px;
+  color: #dec699;
+  padding:10px;
+  box-sizing: border-box;
+  background: url(../imgs/myKingMsgPanelBG.png) no-repeat;
+  background-size: 100% 100%;
+  text-align: center;
+}
+/* .brokenCount{
+  flex:1;
+  width: 120px;
+  height:46px;
+  font-size: 17.33px;
+  color: #f35656;
+  background: url(../imgs/dieBG.png) no-repeat;
+} */
+.guoJiaBox{
+  position: relative;
+}
+.guoJiaBox .rank{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+}
+.guoJiaBox .rank.rank_01{
+  top: -8px;
+  background: url(../imgs/rank_01.png) no-repeat;
+}
+.guoJiaBox .rank.rank_02{
+  top: -8px;
+  background: url(../imgs/rank_02.png) no-repeat;
+}
+.guoMsg .def{
+
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <!-- <meta name="viewport" content="width=device-width,width=750px,minimum-scale=0.36, user-scalable=no"> -->
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,viewport-fit=cover"> -->
+    <meta name="viewport" content="width=device-width,width=520px,minimum-scale=0.36, user-scalable=no">
+
+    <link rel="icon" href="imgs/favicon.png">
+    <title>三国争霸</title>
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/index.css?v=20201215">
+</head>
+
+<body>
+    <div class="app">
+        <header>
+            <div class="head-top">
+                <div class="header-top-left">
+                    <img src="./imgs/jues-small.png" style="position: absolute;top: 5px;left: 5px;" onclick="getMenuPanel()">
+                </div>
+                <div class="flex header-top-right">
+                    <div class="box1">
+                        <div class="box1-left">
+                            <!-- <img src="./imgs/head_icon1.png" alt=""> -->
+                            <span class="myName" style="font-size: 20px;"></span>
+                        </div>
+                        <!-- <div class="box1-right">208596</div> -->
+                    </div>
+                    <div class="box2">
+                        <div class="box2-left">
+                            <img src="./imgs/head_icon2_small.png" alt="">
+                        </div>
+                        <div class="box2-midd">--</div>
+                        <!-- <div class="box2-right">
+                <img src="./imgs/add_button.png" alt="">
+                <img src="./imgs/red_circle.png" alt="" style="position: absolute;top: -5px;left: 25px;">
+              </div> -->
+                    </div>
+                    <div class="box3">
+                        <div class="box3-left">
+                            <img src="./imgs/head_icon3_small.png" alt="">
+                        </div>
+                        <div class="box3-midd">--</div>
+                        <!-- <div class="box3-right">
+                <img src="./imgs/add_button.png" alt="">
+                <img src="./imgs/red_circle.png" alt="" style="position: absolute;top: -5px;left: 25px;">
+              </div> -->
+                    </div>
+                </div>
+                <div class="progress_bar"></div>
+            </div>
+            <div class="top-bar">
+                <p><span class="myName"></span>昭告天下</p>
+                <p id="zhaogao-content">魏国的统统加血，其他的事情我来解决</p>
+                <img src="./imgs/edit.png" alt="" class="top-bar-edit" onclick="$('#publiclyBox').show()">
+            </div>
+        </header>
+        <div class="main flex">
+            <ul id="main-huihe">
+                <!-- <li class="main-first" id="main-content">
+          <div class="huihe"><span>第13回 辕门射戟</span></div>
+          <div class="country"><img src="./imgs//country-icon.png" alt=""></div>
+          <div class="jianli">
+            <img src="./imgs/eos.png" alt="" class="jianli-eos">
+            <span class="eos-text">>9999EOS</span>
+            <img src="./imgs/time.png" alt="" class="jianli-time">
+            <span class="time-text">>9999TIME</span>
+          </div>
+          <div class="status">
+            <img src="./imgs/end.png" alt="">
+          </div>
+          <div class="time">
+            <p>开始时间：&nbsp;2020-12-01 20:00:00 - 2020-12-08 20:00:00 </p>
+          </div>
+        </li> -->
+                <!-- <li class="main-second">
+          <div class="huihe"><span>第14回 宛城之变</span></div>
+          <div class="country"><img src="./imgs//country-icon.png" alt=""></div>
+          <div class="jianli">
+            <img src="./imgs/eos.png" alt="" class="jianli-eos">
+            <span class="eos-text">>9999EOS</span>
+
+            <img src="./imgs//time.png" alt="" class="jianli-time">
+            <span class="time-text">>9999TIME</span>
+
+          </div>
+          <div class="status" style="top: 180px;font-size: 24px;color:#307a42 ;"> -->
+                <!-- <img src="./imgs/keep.png" alt=""> -->
+                <!-- <p>进行中...</p>
+          </div>
+          <div class="time">
+            <p>开始时间：&nbsp;2020-12-01 20:00:00 - 2020-12-08 20:00:00 </p>
+          </div> -->
+                <!-- <div class="guaji">
+            <span class="shouyi">挂机收益:</span>
+            <ul>
+              <li><img src="./imgs//guaji-icon1.png" alt=""><span>410/m</span></li>
+              <li><img src="./imgs/guaji-icon2.png" alt=""><span>425/m</span></li>
+              <li><img src="./imgs/guaji-icon3.png" alt=""><span>600/m</span></li>
+              <li><img src="./imgs/guaji-icon4.png" alt=""><span>11/m</span></li>
+            </ul>
+          </div> -->
+                <!-- </li>
+        <li class="main-third">
+          <div class="huihe"><span>第15回 袁术称帝</span></div>
+          <div class="country"><img src="./imgs/country-icon.png" alt=""></div>
+          <div class="jianli">
+            <img src="./imgs/eos.png" alt="" class="jianli-eos">
+            <span class="eos-text">>9999EOS</span>
+
+            <img src="./imgs//time.png" alt="" class="jianli-time">
+            <span class="time-text">>9999TIME</span>
+
+          </div>
+          <div class="status" style="top: 180px;font-size: 24px;color:#307a42 ;">
+            <p>挂机中...（4/10）</p>
+             <p>进行中</p> -->
+                <!-- </div>
+          <div class="time">
+            <p>开始时间：&nbsp;2020-12-01 20:00:00 - 2020-12-08 20:00:00 </p>
+          </div>  -->
+                <!-- <div class="guaji">
+            <span class="shouyi">挂机收益:</span>
+            <ul>
+              <li><img src="./imgs//guaji-icon1.png" alt=""><span>410/m</span></li>
+              <li><img src="./imgs/guaji-icon2.png" alt=""><span>425/m</span></li>
+              <li><img src="./imgs/guaji-icon3.png" alt=""><span>600/m</span></li>
+              <li><img src="./imgs/guaji-icon4.png" alt=""><span>11/m</span></li>
+            </ul>
+          </div> -->
+                <!-- </li> -->
+            </ul>
+        </div>
+        <div class="bottom flex">
+            <ul>
+
+                <!-- 能用a标签跳转页面就a标签跳转  如果标签跳转不能解决需求 再想其他方法-->
+
+
+                
+                <li><a href="myArms.html"><img src="./imgs/bottom1.png"></a></li>
+                <li><a href="zhanchan.html"><img src="./imgs/bottom2.png"></a></li>
+                <li><a href="index.html"><img src="./imgs/bottom6.png"></a></li>
+                <li><a href="armory.html"><img src="./imgs/bottom3.png"></a></li>
+                <li><a href="#"><img src="./imgs/bottom5.png"></a></li>
+
+
+
+                <!-- <li><img src="./imgs/bottom1.png" id="select1" style="" onclick="goMyArms()"></li>
+                <li><img src="./imgs/bottom2.png" id="select2" style="" onclick="goZhanChan()"></li>
+                <li><img src="./imgs/bottom6.png" style="" onclick="goIndex()"></li>
+                <li><img src="./imgs/bottom3.png" id="select3" style="" onclick="goArmory()"></li>
+                <li><img src="./imgs/bottom5.png" id="select5" style="" onclick="goAlliance()"></li> -->
+            </ul>
+        </div>
+        <div class="alert" id="descriptionMsgBox" style="display: none;">
+            <div class="flex" style="height:100%;">
+                <div class="content" style="padding-bottom: 20px;">
+                    <div class="header flex">
+                        <span style="flex:1;"></span>
+                        <span class="desTitle" style="flex:1.3;">说明</span>
+
+                        <span onclick="$('#descriptionMsgBox').hide()">
+            <img src="imgs/closes1.png" alt="" class="closeSvg">
+          </span>
+                    </div>
+                    <div class="stackCountryBox">
+                        <div style="height: 526px;line-height:25px;overflow-y: auto;background:url(./imgs/bglist.png) no-repeat;padding-left: 10px;">
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="actionBtn" onclick="$('#descriptionMsgBox').hide()">确定</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+<script type="text/javascript" src="./lib/jquery-2.1.0.min.js" defer></script>
+<script type="text/javascript" src="./lib/countUp.js" defer></script>
+<script type="text/javascript" src="./lib/eos16.0.0.min.js" defer></script>
+<script type="text/javascript" src="./lib/scatterjs-core.min.js" defer></script>
+<script type="text/javascript" src="./lib/scatterjs-plugin-eosjs.min.js" defer></script>
+<script type="text/javascript" src="./requestApi/data-api.js" defer></script>
+<script type="module" src="./js/common.js?v=2020122919"></script>
+<script type="text/javascript" src="./js/eos-base.js?v=2020122919" defer></script>
+<script type="module" src="./js/index.js?v=2020120118"></script>
+<!-- <script type="module" src="js/index.js?v=2020120118"></script> -->
+<!-- <script type="text/javascript" src="js/index.js" defer></script> -->
+<!-- <script type="text/javascript" src="js/index.js"></script> -->
+<!-- <script type="text/javascript" src="js/index.js?v=2020123000"></script> -->
+
+</html>
