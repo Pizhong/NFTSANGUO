@@ -217,9 +217,10 @@ header {
     width: 110px;
     padding: 5px;
     background: url(../image/flag-blodBG.png) no-repeat;
+    background-size: 100%;
     position: absolute;
     top: 212px;
-    left: 0;
+    left: -6px;
     font-size: 12.99px;
     color: #612b27;
 }
